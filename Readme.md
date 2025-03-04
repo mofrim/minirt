@@ -1,10 +1,14 @@
-# This is going to 42's MiniRT 🥳
+# This is going to be... 42's MiniRT 🥳
 
 ## Ressources
 
 - [Computerphile video about](https://www.youtube.com/watch?v=ezXGTRSx1g8)
-- [Another Computerphile Vid about Matrix ops and Computer visuals](https://www.youtube.com/watch?v=vQ60rFwh2ig)
+- [Computerphile Vid about Matrix ops and Computer visuals](https://www.youtube.com/watch?v=vQ60rFwh2ig)
 - [Wiki about raytracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics))
+- [And another one on homogeneous coords](https://www.youtube.com/watch?v=o-xwmTODTUI)
+- [aand another one on 3d game graphics](https://www.youtube.com/watch?v=U0_ONQQ5ZNM)
+- [Raytracer in one weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- [An introduction to raytracing in C](https://www.jakobmaier.at/posts/raytracing/)
 
 
 ## Project Overview
