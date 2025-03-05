@@ -1,0 +1,3 @@
+[submodule "libft"]
+	path = libft
+	url = git@github.com:mofrim/42-libft.git

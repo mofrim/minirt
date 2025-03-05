@@ -6,18 +6,32 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/03 14:04:33 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/05 09:01:12 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minirt
 
-SRCS_IN = ./main.c
+SRC_DIR		=	./src
 
-SRCS = $(patsubst ./%.c,%.c,$(SRCS_IN))
+# using the *magic* VPATH variable for finding my sources 🤯. also possible to
+# use it like: `vpath %.c dir1/ dir2/ ...`. more on this ->
+# https://makefiletutorial.com/#the-vpath-directive
+#
+# TLDR; this will make make find the correct source file `./src/exec/bla.c` for
+# any obj called `obj/bla.o`
+VPATH	=	./src
 
-OBJS_DIR = obj
-OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS)) 
+# list all source files here
+SRCS		=	main.c \
+					parse_scene.c \
+					close_btn_handler.c \
+					init_mrt.c \
+					kbd_input_handler.c \
+					rgb_to_int.c
+
+OBJDIR	=	obj
+OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
@@ -28,10 +42,12 @@ LIBMLX = ./minilibx-linux/libmlx.a
 LIB_PATHS = -L$(LIBMLX_PATH) -L$(LIBFT_PATH)
 LIBS = -lmlx -lXext -lX11 -lm -lft
 
-MINRT_HDR	= minirt.h
-INC = -I$(LIBMLX_PATH) -I$(LIBFT_PATH)
+INC_DIR	= $(SRC_DIR)/include
+MINRT_HDR	= $(INC_DIR)/minirt.h
+INC				= -I$(INC_DIR) -I$(LIBMLX_PATH) -I$(LIBFT_PATH)
 
-CC = clang
+# change this back to 'cc' @school for eval
+CC			=	clang
 CFLAGS	=	-Werror -Wall -Wextra
 
 # special nix compilation support for mlx. see LIBMLX rule.
@@ -49,14 +65,14 @@ log_msg = $(MSGOPN) $(1) $(MSGEND)
 
 all: $(NAME)
 
-$(OBJS_DIR)/%.o : %.c $(MINRT_HDR)
-	@mkdir -p $(OBJS_DIR)
+$(OBJDIR)/%.o : %.c $(MINRT_HDR)
+	@mkdir -p $(OBJDIR)
 	@echo -e "$(call log_msg,Compiling: $<)"
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBMLX)
 	@echo -e "$(call log_msg,Compiling minirt...)"
-	$(CC) $(CFLAGS) $(INC) $(LIB_PATHS) -o fdf $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
 
 $(LIBFT):
 	@echo -e "$(call log_msg,Compiling libft...)"
@@ -81,7 +97,7 @@ bonus: $(NAME)
 mlx: $(LIBMLX)
 
 debug: $(SRCS) $(LIBFT) $(LIBMLX) $(MINRT_HDR)
-	$(CC) -g $(CFLAGS) $(INC) $(LIB_PATHS) -o fdf $(SRCS) $(LIBS)
+	$(CC) -g $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(SRCS) $(LIBS)
 
 setup:
 	@echo -e "$(call log_msg,Setting things up...)"
@@ -101,7 +117,7 @@ clean:
 	@echo -e "$(call log_msg,Removing libmlx objs.)"
 	@make -s -C $(LIBMLX_PATH) clean
 	@echo -e "$(call log_msg,Removing fdf objs.)"
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJDIR)
 
 fclean:
 	@echo -e "$(call log_msg,fcleaning libft.)"
@@ -109,7 +125,7 @@ fclean:
 	@echo -e "$(call log_msg,fcleaning libmlx.)"
 	@make -s -C $(LIBMLX_PATH) clean
 	@echo -e "$(call log_msg,Removing fdf objs.)"
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJDIR)
 	@echo -e "$(call log_msg,Removing $(NAME) binary.)"
 	@rm -f $(NAME)
 

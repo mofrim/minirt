@@ -3,12 +3,12 @@ pkgs.mkShell {
   name = "minirt";
 
   buildInputs = with pkgs; [
+    clang-tools
+    clang_12
     libbsd
     xorg.libXext
     xorg.libX11.dev
     qt5.qtwayland
-    clang_12
-    # clang12Stdenv
   ];
 
   shellHook = ''
