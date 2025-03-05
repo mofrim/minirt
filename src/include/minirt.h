@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 13:43:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:48:36 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,62 @@ typedef struct {
     double	aspect_ratio;
 }	t_camera;
 
+/* Object structs */
+
+typedef enum e_obj
+{
+	PLANE,
+	SPHERE,
+	CYLINDER
+} t_obj;
+
+typedef struct s_sphere
+{
+	float	x;
+	float	y;
+	float	z;
+	float	radius;
+	int		color[3];
+} t_sphere;
+
+typedef struct s_cylinder
+{
+	float	x;
+	float	y;
+	float	z;
+	float	nx;
+	float	ny;
+	float	nz;
+	float	radius;
+	float	height;
+} t_cylinder;
+
+typedef struct s_plane
+{
+	float	x;
+	float	y;
+	float	z;
+	float	nx;
+	float	ny;
+	float	nz;
+	int		color[3];
+} t_plane;
+
+typedef struct s_objects
+{
+	t_obj				type;
+	void				*data;
+	struct s_objects	*next;
+} t_objects;
+
 typedef struct s_scene
 {
 	t_camera	*cam;
-	// objects linked list
-	// lights linked list
-	// etc...
+	t_amb_light	*alight;
+	t_objects	*objects;
 }	t_scene;
 
-/* The MiniRT master-struct holding all nesessary data and pointers to struct
+/* The MiniRT master-struct holding all necessary data and pointers to struct
  * needed throughout the program. */
 typedef struct s_mrt
 {
