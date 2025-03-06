@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:33:53 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/06 09:39:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/06 17:36:30 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ t_vec3* vec3_new_alloc(double x, double y, double z)
 	p->x = x;
 	p->y = y;
 	p->z = z;
-	p->_add_scalar = _add_scalar;
-	p->_add_vec = _add_vec;
-	p->_add_vec_coords = _add_vec_coords;
-	p->_mult = _mult;
 	p->add_scalar = add_scalar;
 	p->add_vec = add_vec;
 	p->add_vec_coords = add_vec_coords;
@@ -40,10 +36,6 @@ t_vec3 vec3_new(double x, double y, double z)
 	p.x = x;
 	p.y = y;
 	p.z = z;
-	p._add_scalar = _add_scalar;
-	p._add_vec = _add_vec;
-	p._add_vec_coords = _add_vec_coords;
-	p._mult = _mult;
 	p.add_scalar = add_scalar;
 	p.add_vec = add_vec;
 	p.add_vec_coords = add_vec_coords;

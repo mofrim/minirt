@@ -30,9 +30,11 @@ SRCS		=	main.c \
 					kbd_input_handler.c \
 					rgb_to_int.c \
 					vec3_new.c \
-					vec3_basic_ops1.c \
-					vec3_basic_ops2.c \
-					vec3_products.c
+					vec3_basic_ops.c \
+					vec3_products.c \
+					put_pixel_string.c \
+					disk.c \
+					sidebar.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
