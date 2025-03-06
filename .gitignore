@@ -8,3 +8,6 @@ minilibx_opengl.tgz
 minirt
 obj/
 
+core
+playground/chat
+playground/immitate_oop
