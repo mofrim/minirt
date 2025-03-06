@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 13:43:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/06 09:52:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
 
-
 /********** LinalAlg headers. **********/
 # include "vec3.h"
+# include "v3.h"
 # include "ray.h"
 
 /********** Consts. **********/

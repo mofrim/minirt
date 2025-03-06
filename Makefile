@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/05 09:01:12 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/06 09:56:17 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_DIR		=	./src
 #
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
 # any obj called `obj/bla.o`
-VPATH	=	./src
+VPATH	=	./src ./src/linalg
 
 # list all source files here
 SRCS		=	main.c \
@@ -28,7 +28,11 @@ SRCS		=	main.c \
 					close_btn_handler.c \
 					init_mrt.c \
 					kbd_input_handler.c \
-					rgb_to_int.c
+					rgb_to_int.c \
+					vec3_new.c \
+					vec3_basic_ops1.c \
+					vec3_basic_ops2.c \
+					vec3_products.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
