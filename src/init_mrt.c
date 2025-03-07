@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 08:47:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/07 08:27:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_mrt	*init_mrt(void)
 
 	mrt = malloc(sizeof(t_mrt));
 	init_mlx_win(mrt);
-	mlx_set_font(mrt->mlx, mrt->win, FONT);
 	return (mrt);
 }
 
