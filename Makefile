@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/12 10:21:57 by fmaurer          ###   ########.fr        #
+#    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
+#    Updated: 2025/03/14 17:03:09 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_DIR		=	./src
 #
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
 # any obj called `obj/bla.o`
-VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace
+VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace \
+				./src/parsing
 
 # list all source files here
 SRCS		=	main.c \
@@ -53,7 +54,11 @@ SRCS		=	main.c \
 					sphere_intersect.c \
 					sphere_colr.c \
 					colr_utils.c \
-					do_stuff.c
+					do_stuff.c \
+					tokenizer.c \
+					parser.c \
+					ft_isspace.c \
+					ft_strndup.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
@@ -75,7 +80,8 @@ MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/v3.h \
 							$(INC_DIR)/constants.h \
 							$(INC_DIR)/objects.h \
-							$(INC_DIR)/mtrx.h
+							$(INC_DIR)/mtrx.h \
+							$(INC_DIR)/parser.h
 
 # change this back to 'cc' @school for eval
 CC			=	clang
@@ -122,8 +128,6 @@ ifdef NIX11
 	@echo -e "$(call log_msg,feels nixy around here.. Compiling MLX the nix way!)"
 	sed -i 's/local xlib_inc="$$(get_xlib_include_path)"/local xlib_inc="$$NIX11"/g' ./minilibx-linux/configure 
 	sed -i 's/mlx_int_anti_resize_win/\/\/mlx_int_anti_resize_win/g' ./minilibx-linux/mlx_new_window.c
-	# sed -i 's/# define WINX 2000/# define WINX 1400/g' ./src/include/minirt.h
-	# sed -i 's/# define WINY 1500/# define WINY 1000/g' ./src/include/minirt.h
 	NIX11=$NIX11 make -C ./minilibx-linux/
 else
 	@echo -e "$(call log_msg,feels clustery around here.. compiling MLX the normal way!)"
@@ -142,8 +146,8 @@ setup:
 	@echo -e "$(call log_msg,Setting things up...)"
 	@rm -rf ./minilibx-linux ./test_maps
 	@echo -e "$(call log_msg,Downloading mlx...)"
-	@wget -c https://cdn.intra.42.fr/document/document/30844/minilibx-linux.tgz 2> /dev/null
-	@wget -c https://cdn.intra.42.fr/document/document/30845/minilibx_opengl.tgz 2> /dev/null
+	@wget -c https://cdn.intra.42.fr/document/document/31543/minilibx-linux.tgz 2> /dev/null
+	@wget -c https://cdn.intra.42.fr/document/document/31544/minilibx_opengl.tgz 2> /dev/null
 	@echo	-e "$(call log_msg,Unpacking mlx...)"
 	@tar xzf ./minilibx-linux.tgz > /dev/null
 	@tar xzf ./minilibx_opengl.tgz > /dev/null

@@ -56,6 +56,10 @@
 
 # include "objects.h"
 
+/********** Parsing. **********/
+
+# include "parser.h"
+
 /********** Structs. **********/
 
 /* In principle a 2d vector... */
