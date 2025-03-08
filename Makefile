@@ -32,9 +32,14 @@ SRCS		=	main.c \
 					vec3_new.c \
 					vec3_basic_ops.c \
 					vec3_products.c \
+					v3_new.c \
 					put_pixel_string.c \
 					disk.c \
-					sidebar.c
+					sidebar.c \
+					objlst.c \
+					print_scene.c \
+					do_stuff.c
+
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))

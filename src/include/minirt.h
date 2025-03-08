@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 10:49:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 12:48:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 typedef struct s_scene
 {
 	t_camera	*cam;
-	t_amb_light	*alight;
-	t_objects	*objects;
+	t_amb_light	alight;
+	t_objlst	*objects;
 }	t_scene;
 
 
@@ -93,10 +93,14 @@ void	int_to_rgb(int rgb_arr[3], int rgb_num);
 void	put_pixel_win(t_mrt	mrt, t_pxl pos, char *colr);
 void	put_pixel_canvas(t_mrt	mrt, t_pxl pos, char *colr);
 void	put_string(t_mrt mrt, t_pxl pos, char *colr, char *txt);
+void	print_scene(t_scene scene);
 
 /********** Objects. **********/
 
 void	draw_disk(t_pxl p, int radius, char *colr, t_mrt mrt);
 
+/********** Do stuff. **********/
+
+void	do_stuff(t_mrt mrt);
 
 #endif

@@ -6,48 +6,26 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:55:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/07 08:47:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 11:48:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void draw_cross(t_mrt mrt)
-{
-	for (int i = 0;i < 100;i++) {
-		put_pixel_canvas(mrt, (t_pxl){i, 0}, "00ff00");
-		put_pixel_canvas(mrt, (t_pxl){-i, 0}, "00ff00");
-		put_pixel_canvas(mrt, (t_pxl){0, i}, "00ff00");
-		put_pixel_canvas(mrt, (t_pxl){0, -i}, "00ff00");
-	}
-}
-
-void	do_stuff(t_mrt mrt)
-{
-	show_sidebar(mrt);
-	draw_cross(mrt);
-	draw_disk((t_pxl){0,0}, 10, "ff0000", mrt);
-	draw_disk((t_pxl){-CANVAS_WIDTH/2,0}, 100, "ff0000", mrt);
-	draw_disk((t_pxl){-CANVAS_WIDTH/2,WINY/2}, 123, "123458", mrt);
-	draw_disk((t_pxl){CANVAS_WIDTH/2,WINY/2}, 123, "bbbbbb", mrt);
-	draw_disk((t_pxl){CANVAS_WIDTH/2,WINY/2}, 123, "654321", mrt);
-	draw_disk((t_pxl){CANVAS_WIDTH/4,WINY/4}, 123, "aaaa00", mrt);
-	// put_string(mrt, (t_pxl){-100, WINY/2-30}, "00ff00",
-	// 		"MiniRT coming soon...");
-}
 
 int	main(int ac, char **av)
 {
 	t_mrt	*mrt;
 	t_scene	*scene;
 
-	if (ac != 2)
-		return (printf("Usage: ./minirt SCENE_FILE\n"), 1);
-	scene = parse_scene(av[1]);
+	(void)ac;
+	(void)av;
+	// if (ac != 2)
+	// 	return (printf("Usage: ./minirt SCENE_FILE\n"), 1);
+	// scene = parse_scene(av[1]);
+	scene = parse_scene("nofile");
 	if (scene == NULL)
 		return (printf("Error during scene file parsing\n"), 1);
-	mrt = init_mrt();
-	mrt->scene = scene;
+	mrt = init_mrt(scene);
 	mlx_key_hook(mrt->win, kbd_input_handler, mrt);
 	mlx_hook(mrt->win, DestroyNotify, 0, close_btn_handler, mrt);
 	do_stuff(*mrt);
