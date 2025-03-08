@@ -63,6 +63,7 @@ typedef struct s_v2
 	double	x2;
 }	t_v2;
 
+
 /* The scene master struct. */
 typedef struct s_scene
 {
