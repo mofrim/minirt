@@ -6,23 +6,25 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:36:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 13:59:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
-#include "v3.h"
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
+
+# include "vec3.h"
+# include "v3.h"
+# include <stdint.h>
 
 
 /* The RGB color struct. */
 typedef struct s_colr
 {
-	int	r;
-	int	g;
-	int	b;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
 }	t_colr;
 
 /* Object structs */

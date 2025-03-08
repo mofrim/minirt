@@ -6,12 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:38:39 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/06 17:34:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:29:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC3_H
 # define VEC3_H
+
+# include "v3.h"
 
 /**
  * The heavy 3D vector class.
@@ -54,5 +56,6 @@ t_vec3	*vec3_cross_alloc(t_vec3 u, t_vec3 w);
 
 t_vec3	vec3_new(double x, double y, double z);
 t_vec3	*vec3_new_alloc(double x, double y, double z);
+t_vec3	vec3_new_v3(t_v3 v);
 
 #endif

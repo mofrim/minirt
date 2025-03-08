@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:33:53 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:34:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:28:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_vec3* vec3_new_alloc(double x, double y, double z)
     return (p);
 }
 
+/* Make a new t_vec3 vector from xyz coords *without* allocation. For use in
+ * direct assignments etc. */
 t_vec3 vec3_new(double x, double y, double z)
 {
     t_vec3	p;
@@ -47,6 +49,23 @@ t_vec3 vec3_new(double x, double y, double z)
 	p.x = x;
 	p.y = y;
 	p.z = z;
+	p.add_scalar = add_scalar;
+	p.add_vec = add_vec;
+	p.add_vec_coords = add_vec_coords;
+	p.mult = mult;
+	p.dot = dot;
+	p.cross = cross;
+    return (p);
+}
+
+/* Make a new t_vec3 from a t_v3 without allocation! */
+t_vec3 vec3_new_v3(t_v3 v)
+{
+    t_vec3	p;
+
+	p.x = v.x;
+	p.y = v.y;
+	p.z = v.z;
 	p.add_scalar = add_scalar;
 	p.add_vec = add_vec;
 	p.add_vec_coords = add_vec_coords;

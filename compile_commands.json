@@ -2,6 +2,8 @@
   {
     "arguments": [
       "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
       "-Werror",
       "-Wall",
       "-Wextra",
@@ -20,6 +22,8 @@
   {
     "arguments": [
       "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
       "-Werror",
       "-Wall",
       "-Wextra",
@@ -37,452 +41,202 @@
   },
   {
     "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_init.o",
-      "mlx_init.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_init.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_init.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_new_window.o",
-      "mlx_new_window.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_new_window.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_new_window.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_pixel_put.o",
-      "mlx_pixel_put.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_pixel_put.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_pixel_put.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_loop.o",
-      "mlx_loop.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_loop.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_loop.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_mouse_hook.o",
-      "mlx_mouse_hook.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_mouse_hook.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_mouse_hook.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_key_hook.o",
-      "mlx_key_hook.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_key_hook.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_key_hook.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_expose_hook.o",
-      "mlx_expose_hook.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_expose_hook.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_expose_hook.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_loop_hook.o",
-      "mlx_loop_hook.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_loop_hook.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_loop_hook.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_anti_resize_win.o",
-      "mlx_int_anti_resize_win.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_anti_resize_win.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_anti_resize_win.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_do_nothing.o",
-      "mlx_int_do_nothing.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_do_nothing.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_do_nothing.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_wait_first_expose.o",
-      "mlx_int_wait_first_expose.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_wait_first_expose.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_wait_first_expose.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_get_visual.o",
-      "mlx_int_get_visual.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_get_visual.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_get_visual.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_flush_event.o",
-      "mlx_flush_event.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_flush_event.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_flush_event.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_string_put.o",
-      "mlx_string_put.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_string_put.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_string_put.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_set_font.o",
-      "mlx_set_font.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_set_font.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_set_font.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_new_image.o",
-      "mlx_new_image.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_new_image.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_new_image.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_get_data_addr.o",
-      "mlx_get_data_addr.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_get_data_addr.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_get_data_addr.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_put_image_to_window.o",
-      "mlx_put_image_to_window.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_put_image_to_window.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_put_image_to_window.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_get_color_value.o",
-      "mlx_get_color_value.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_get_color_value.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_get_color_value.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_clear_window.o",
-      "mlx_clear_window.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_clear_window.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_clear_window.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_xpm.o",
-      "mlx_xpm.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_xpm.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_xpm.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_str_to_wordtab.o",
-      "mlx_int_str_to_wordtab.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_str_to_wordtab.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_str_to_wordtab.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_destroy_window.o",
-      "mlx_destroy_window.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_destroy_window.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_destroy_window.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_param_event.o",
-      "mlx_int_param_event.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_param_event.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_param_event.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_int_set_win_event_mask.o",
-      "mlx_int_set_win_event_mask.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_int_set_win_event_mask.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_int_set_win_event_mask.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_hook.o",
-      "mlx_hook.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_hook.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_hook.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_rgb.o",
-      "mlx_rgb.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_rgb.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_rgb.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_destroy_image.o",
-      "mlx_destroy_image.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_destroy_image.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_destroy_image.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_mouse.o",
-      "mlx_mouse.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_mouse.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_mouse.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_screen_size.o",
-      "mlx_screen_size.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_screen_size.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_screen_size.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-O3",
-      "-IIX11",
-      "-c",
-      "-o",
-      "obj/mlx_destroy_display.o",
-      "mlx_destroy_display.c"
-    ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/mlx_destroy_display.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/obj/mlx_destroy_display.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/gcc",
-      "-IIX11",
-      "-O3",
-      "-I..",
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
       "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
       "-c",
       "-o",
-      "main.o",
-      "main.c"
+      "obj/close_btn_handler.o",
+      "./src/close_btn_handler.c"
     ],
-    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/test",
-    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/test/main.c",
-    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/minilibx-linux/test/main.o"
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/close_btn_handler.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/close_btn_handler.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/init_mrt.o",
+      "./src/init_mrt.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/init_mrt.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/init_mrt.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/kbd_input_handler.o",
+      "./src/kbd_input_handler.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/kbd_input_handler.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/kbd_input_handler.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/rgb_to_int.o",
+      "./src/rgb_to_int.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/rgb_to_int.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/rgb_to_int.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/vec3_new.o",
+      "./src/linalg/vec3_new.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/linalg/vec3_new.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/vec3_new.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/vec3_basic_ops.o",
+      "./src/linalg/vec3_basic_ops.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/linalg/vec3_basic_ops.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/vec3_basic_ops.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/vec3_products.o",
+      "./src/linalg/vec3_products.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/linalg/vec3_products.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/vec3_products.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/put_pixel_string.o",
+      "./src/put_pixel_string.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/put_pixel_string.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/put_pixel_string.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/disk.o",
+      "./src/objects/disk.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/objects/disk.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/disk.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gsblvcd1g89wakpp5n4msrmqckbkdswz-clang-wrapper-12.0.1/bin/clang",
+      "-DDEFAULT",
+      "-g",
+      "-Werror",
+      "-Wall",
+      "-Wextra",
+      "-I./src/include",
+      "-I./minilibx-linux",
+      "-I./libft",
+      "-c",
+      "-o",
+      "obj/sidebar.o",
+      "./src/ui/sidebar.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/minirt/minirtGH",
+    "file": "/home/frido/c0de/42/theCore/minirt/minirtGH/src/ui/sidebar.c",
+    "output": "/home/frido/c0de/42/theCore/minirt/minirtGH/obj/sidebar.o"
   }
 ]

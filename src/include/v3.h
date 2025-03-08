@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:49:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:34:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:30:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /* A lighter 3d-vector struct. */
 typedef struct s_v3
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 }	t_v3;
 
-t_v3*	v3_new_alloc(double x, double y, double z);
+t_v3	*v3_new_alloc(double x, double y, double z);
 t_v3	v3_new(double x, double y, double z);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:48:52 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:41:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 /* errno */
 # include <errno.h>
 
+/* for uint8_t, ... */
+# include <stdint.h>
+
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
@@ -52,6 +55,13 @@
 # include "objects.h"
 
 /********** Structs. **********/
+
+/* In principle a 2d vector... */
+typedef struct s_v2
+{
+	double	x1;
+	double	x2;
+}	t_v2;
 
 /* The scene master struct. */
 typedef struct s_scene
@@ -85,6 +95,7 @@ t_mrt	*init_mrt(t_scene *scene);
 int		close_btn_handler(t_mrt *mrt);
 int		kbd_input_handler(int key, t_mrt *mrt);
 void	show_sidebar(t_mrt mrt);
+void	raytrace(t_mrt mrt);
 
 /********** Utilities. **********/
 
@@ -92,8 +103,11 @@ int		rgb_to_int(char *rgbstr);
 void	int_to_rgb(int rgb_arr[3], int rgb_num);
 void	put_pixel_win(t_mrt	mrt, t_pxl pos, char *colr);
 void	put_pixel_canvas(t_mrt	mrt, t_pxl pos, char *colr);
+void	put_pixel_canvas_rt(t_mrt mrt, t_pxl pos, t_colr pxlcolr);
 void	put_string(t_mrt mrt, t_pxl pos, char *colr, char *txt);
 void	print_scene(t_scene scene);
+int		tcolr_to_int(t_colr colr);
+t_colr	int_to_tcolr(int int_colr);
 
 /********** Objects. **********/
 
