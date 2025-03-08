@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:19:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 09:15:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 10:32:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 t_scene	*parse_scene(char *scene_file)
 {
-	t_scene	*scene;
-	int		sc_fd;
+	/* For now go without scene file... */
+	// int		sc_fd;
+	// sc_fd = open(scene_file, O_RDONLY);
+	// if (sc_fd == -1)
+	// 	return (NULL);
+	(void)scene_file;
 
-	sc_fd = open(scene_file, O_RDONLY);
-	if (sc_fd == -1)
-		return (NULL);
+	t_scene	*scene;
 	scene = malloc(sizeof(t_scene));
 	return (scene);
 }
