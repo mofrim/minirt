@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/07 22:08:47 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/08 10:49:51 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,8 @@ INC					= -I$(INC_DIR) -I$(LIBMLX_PATH) -I$(LIBFT_PATH)
 MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/vec3.h \
 							$(INC_DIR)/v3.h \
-							$(INC_DIR)/constants.h
-
+							$(INC_DIR)/constants.h \
+							$(INC_DIR)/objects.h
 
 # change this back to 'cc' @school for eval
 CC			=	clang

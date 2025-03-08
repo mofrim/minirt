@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/07 21:10:05 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 10:49:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,20 @@
 
 # include "constants.h"
 
+/********** The Objects. **********/
+
+# include "objects.h"
+
 /********** Structs. **********/
+
+/* The scene master struct. */
+typedef struct s_scene
+{
+	t_camera	*cam;
+	t_amb_light	*alight;
+	t_objects	*objects;
+}	t_scene;
+
 
 /* A pixel on our screen. */
 typedef struct s_pxl
@@ -55,23 +68,6 @@ typedef struct s_pxl
 	int	x;
 	int	y;
 }	t_pxl;
-
-/* A first idea of a struct for the camera. */
-typedef struct s_camera{
-    t_vec3	position;
-    t_vec3	look_at;
-    t_vec3	up;
-    double	fov;
-    double	aspect_ratio;
-}	t_camera;
-
-typedef struct s_scene
-{
-	t_camera	*cam;
-	// objects linked list
-	// lights linked list
-	// etc...
-}	t_scene;
 
 /* The MiniRT master-struct holding all nesessary data and pointers to struct
  * needed throughout the program. */
@@ -85,10 +81,10 @@ typedef struct s_mrt
 /********** General functions. **********/
 
 t_scene	*parse_scene(char *scene_file);
-t_mrt	*init_mrt(void);
+t_mrt	*init_mrt(t_scene *scene);
 int		close_btn_handler(t_mrt *mrt);
 int		kbd_input_handler(int key, t_mrt *mrt);
-void show_sidebar(t_mrt mrt);
+void	show_sidebar(t_mrt mrt);
 
 /********** Utilities. **********/
 
