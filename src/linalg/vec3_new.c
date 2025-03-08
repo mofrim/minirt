@@ -6,11 +6,22 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:33:53 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/06 17:36:30 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 12:34:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+/**
+ * t_vec3 vs. t_v3
+ *
+ * So... we do not know yet what kind of vector will be most handy with this
+ * project. So far it feels like f.ex. for saving the camera position inside the
+ * t_camera struct a t_v3 is sufficient and uses a lot less memory than a
+ * t_vec3. If we than were to do calculations, we can assign locally (on the
+ * stack) inside a function where we do calculations the t_v3 to a t_vec3 and do
+ * the calculations with this.
+ */
 
 t_vec3* vec3_new_alloc(double x, double y, double z)
 {
