@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/08 10:49:51 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/08 12:48:04 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_DIR		=	./src
 #
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
 # any obj called `obj/bla.o`
-VPATH	=	./src ./src/linalg ./src/objects ./src/ui
+VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils
 
 # list all source files here
 SRCS		=	main.c \
