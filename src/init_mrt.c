@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/07 08:27:05 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 10:28:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static void	init_mlx_win(t_mrt *mrt);
 
-t_mrt	*init_mrt(void)
+t_mrt	*init_mrt(t_scene *scene)
 {
 	t_mrt	*mrt;
 
 	mrt = malloc(sizeof(t_mrt));
 	init_mlx_win(mrt);
+	mrt->scene = scene;
 	return (mrt);
 }
 
