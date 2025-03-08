@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 13:59:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 20:51:57 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_colr
 /* Object structs */
 typedef enum e_obj
 {
+	LIGHT,
 	PLANE,
 	SPHERE,
 	CYLINDER
@@ -44,7 +45,7 @@ typedef struct s_sphere
 	t_v3	center;
 	double	radius;
 	t_colr	colr;
-} t_sphere;
+}	t_sphere;
 
 typedef struct s_cylinder
 {
@@ -53,7 +54,8 @@ typedef struct s_cylinder
 	double	radius;
 	double	height;
 	t_colr	colr;
-} t_cylinder;
+}	t_cylinder;
+
 
 /* pop = Point On Plane :) */
 typedef struct s_plane
@@ -61,11 +63,18 @@ typedef struct s_plane
 	t_v3	pop;
 	t_v3	normal;
 	t_colr	colr;
-} t_plane;
+}	t_plane;
 
+typedef struct s_light
+{
+	t_v3	pos;
+	t_v3	look_at;
+	t_colr	colr;
+	double	brightness;
+}	t_light;
 typedef struct s_amb_light
 {
-	double	ratio;
+	double	ratio; //maybe this ratio can be combined with the normal light's brightness?
 	t_colr	colr;
 }	t_amb_light;
 
