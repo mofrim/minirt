@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mrt.c                                         :+:      :+:    :+:   */
+/*   disk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 10:28:53 by fmaurer          ###   ########.fr       */
+/*   Created: 2025/03/06 14:40:31 by fmaurer           #+#    #+#             */
+/*   Updated: 2025/03/06 17:28:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	init_mlx_win(t_mrt *mrt);
-
-t_mrt	*init_mrt(t_scene *scene)
+/* Draw a disk. */
+void	draw_disk(t_pxl p, int radius, char *colr, t_mrt mrt)
 {
-	t_mrt	*mrt;
+	int	i;
+	int	j;
 
-	mrt = malloc(sizeof(t_mrt));
-	init_mlx_win(mrt);
-	mrt->scene = scene;
-	return (mrt);
-}
-
-static void	init_mlx_win(t_mrt *mrt)
-{
-	mrt->mlx = mlx_init();
-	if (!mrt->mlx)
+	i = -1;
+	while (++i < radius)
 	{
-		printf(" !! mlx_init fail !!\n");
-		exit(1);
-	}
-	mrt->win = mlx_new_window(mrt->mlx, WINX, WINY, "minirt");
-	if (!mrt->win)
-	{
-		printf("!! mlx_new_window fail !!\n");
-		exit(1);
+		j = -1;
+		while (++j < sqrt(radius * radius - i * i))
+		{
+			put_pixel_canvas(mrt, (t_pxl){p.x - i, p.y + j}, colr);
+			put_pixel_canvas(mrt, (t_pxl){p.x - i, p.y - j}, colr);
+			put_pixel_canvas(mrt, (t_pxl){p.x + i, p.y + j}, colr);
+			put_pixel_canvas(mrt, (t_pxl){p.x + i, p.y - j}, colr);
+		}
 	}
 }

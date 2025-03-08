@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mrt.c                                         :+:      :+:    :+:   */
+/*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 10:28:53 by fmaurer          ###   ########.fr       */
+/*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
+/*   Updated: 2025/03/08 13:07:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	init_mlx_win(t_mrt *mrt);
-
-t_mrt	*init_mrt(t_scene *scene)
+static void	print_cam(t_camera cam)
 {
-	t_mrt	*mrt;
-
-	mrt = malloc(sizeof(t_mrt));
-	init_mlx_win(mrt);
-	mrt->scene = scene;
-	return (mrt);
+	printf("  pos=(%f,%f,%f), look_at=(%f,%f,%f), fov=%f\n",
+			cam.pos.x, cam.pos.x, cam.pos.x,
+			cam.look_at.x, cam.look_at.x, cam.look_at.x,
+			cam.fov);
 }
 
-static void	init_mlx_win(t_mrt *mrt)
+/**
+ * Print the contents of the scene struct
+ *
+ * Only for debugging and info purpose.
+ */
+void	print_scene(t_scene scene)
 {
-	mrt->mlx = mlx_init();
-	if (!mrt->mlx)
-	{
-		printf(" !! mlx_init fail !!\n");
-		exit(1);
-	}
-	mrt->win = mlx_new_window(mrt->mlx, WINX, WINY, "minirt");
-	if (!mrt->win)
-	{
-		printf("!! mlx_new_window fail !!\n");
-		exit(1);
-	}
+	printf("-- cam --\n");
+	print_cam(*scene.cam);
+	printf("-- objects --\n");
+	objlst_print(scene.objects);
 }

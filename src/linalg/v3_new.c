@@ -1,57 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3.c                                             :+:      :+:    :+:   */
+/*   v3_new.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:33:53 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 14:02:39 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/08 14:27:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	add_scalar(struct s_vec3 *self, double d)
+/* Make a new t_v3 from the x,y,z coords. Allocates and returns a pointer to
+ * that mem. */
+t_v3* v3_new_alloc(double x, double y, double z)
 {
-	self->x += d;
-	self->y += d;
-	self->z += d;
-}
-
-void add_vec(struct s_vec3 *self, struct s_vec3 v)
-{
-	self->x += v.x;
-	self->y += v.y;
-	self->z += v.z;
-}
-
-void add_vec_coords(struct s_vec3 *self, double x, double y, double z)
-{
-	self->x += x;
-	self->y += y;
-	self->z += z;
-}
-
-void	mult(struct s_vec3 *self, double d)
-{
-	self->x *= d;
-	self->y *= d;
-	self->z *= d;
-}
-
-t_vec3* vec3_new(double x, double y, double z)
-{
-    t_vec3	*p;
+    t_v3	*p;
 
 	p = malloc(sizeof(t_vec3));
 	p->x = x;
 	p->y = y;
 	p->z = z;
-	p->add_scalar = add_scalar;
-	p->add_vec = add_vec;
-	p->add_vec_coords = add_vec_coords;
-	p->mult = mult;
     return (p);
 }
 
+/* Make a new t_v3 *without* allocation. For use in direct assignments. */
+t_v3 v3_new(double x, double y, double z)
+{
+    t_v3	p;
+
+	p.x = x;
+	p.y = y;
+	p.z = z;
+    return (p);
+}

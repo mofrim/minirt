@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mrt.c                                         :+:      :+:    :+:   */
+/*   tcolr_to_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 10:28:53 by fmaurer          ###   ########.fr       */
+/*   Created: 2025/03/05 09:00:16 by fmaurer           #+#    #+#             */
+/*   Updated: 2025/03/08 14:10:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	init_mlx_win(t_mrt *mrt);
-
-t_mrt	*init_mrt(t_scene *scene)
+/* Convert from RGB color in our t_colr type to int for mlx. */
+int	tcolr_to_int(t_colr colr)
 {
-	t_mrt	*mrt;
+	int	red;
+	int	green;
+	int	blue;
 
-	mrt = malloc(sizeof(t_mrt));
-	init_mlx_win(mrt);
-	mrt->scene = scene;
-	return (mrt);
+	red = colr.r;
+	green = colr.g;
+	blue = colr.b;
+	return (red << 16 | green << 8 | blue);
 }
 
-static void	init_mlx_win(t_mrt *mrt)
+/* Convert from mlx's int-color to t_colr RGB color. */
+t_colr	int_to_tcolr(int int_colr)
 {
-	mrt->mlx = mlx_init();
-	if (!mrt->mlx)
-	{
-		printf(" !! mlx_init fail !!\n");
-		exit(1);
-	}
-	mrt->win = mlx_new_window(mrt->mlx, WINX, WINY, "minirt");
-	if (!mrt->win)
-	{
-		printf("!! mlx_new_window fail !!\n");
-		exit(1);
-	}
+	t_colr	ret;
+
+	ret.r = (int_colr >> 16) & 255;
+	ret.g = (int_colr >> 8) & 255;
+	ret.b = int_colr & 255;
+	return (ret);
 }
