@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/06 17:36:46 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/07 22:08:47 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,9 @@ INC					= -I$(INC_DIR) -I$(LIBMLX_PATH) -I$(LIBFT_PATH)
 
 MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/vec3.h \
-							$(INC_DIR)/v3.h
+							$(INC_DIR)/v3.h \
+							$(INC_DIR)/constants.h
+
 
 # change this back to 'cc' @school for eval
 CC			=	clang
@@ -72,16 +74,24 @@ MSGEND = $(YLW)]]$(EOC)
 
 log_msg = $(MSGOPN) $(1) $(MSGEND)
 
+# Control preproc consts in constants.h based on build host:
+ifeq ($(HOST), rubi)
+	BHOST = RUBI
+else
+	BHOST = DEFAULT
+endif
+
 all: $(NAME)
 
 $(OBJDIR)/%.o : %.c $(MINRT_HDRS)
 	@mkdir -p $(OBJDIR)
 	@echo -e "$(call log_msg,Compiling: $<)"
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) -D$(BHOST) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT) $(LIBMLX)
+
+$(NAME): $(OBJS) $(LIBFT) $(LIBMLX) $(MINRT_HDRS)
 	@echo -e "$(call log_msg,Compiling minirt...)"
-	$(CC) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
+	$(CC) -D$(BHOST) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
 
 $(LIBFT):
 	@echo -e "$(call log_msg,Compiling libft...)"
@@ -122,7 +132,7 @@ setup:
 	@sleep 1s
 	@echo -e "$(call log_msg,There you go!)"
 
-clean: 
+fullclean:
 	@echo -e "$(call log_msg,Removing libft objs.)"
 	@make -s -C $(LIBFT_PATH) clean
 	@echo -e "$(call log_msg,Removing libmlx objs.)"
@@ -130,7 +140,11 @@ clean:
 	@echo -e "$(call log_msg,Removing minirt objs.)"
 	@rm -rf $(OBJDIR)
 
-fclean:
+clean:
+	@echo -e "$(call log_msg,Removing minirt objs.)"
+	@rm -rf $(OBJDIR)
+
+fullfclean:
 	@echo -e "$(call log_msg,fcleaning libft.)"
 	@make -s -C $(LIBFT_PATH) fclean
 	@echo -e "$(call log_msg,fcleaning libmlx.)"
@@ -140,6 +154,13 @@ fclean:
 	@echo -e "$(call log_msg,Removing $(NAME) binary.)"
 	@rm -f $(NAME)
 
+fclean: clean
+	@echo -e "$(call log_msg,Removing $(NAME) binary.)"
+	@rm -f $(NAME)
+
+
+fullre: fullfclean all
+
 re: fclean all
 
-.PHONY: all clean fclean re mlx debug bonus setup help
+.PHONY: all fullclean clean fclean re mlx debug bonus setup help

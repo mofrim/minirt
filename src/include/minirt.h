@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/07 08:45:45 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/07 21:10:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,7 @@
 
 /********** Consts. **********/
 
-# define WINX 				1600
-# define WINY 				1000
-/* The Area reserved for the sidebar. */
-# define PIXEL_MINX 		-666
-# define PIXEL_MAXX 		666
-# define PIXEL_MINY 		-500
-# define PIXEL_MAXY 		500
-// # define CANVAS_WIDTH		(WINX - CANVAS_MINX)
-# define CANVAS_WIDTH		1332
-// # define CANVAS_OFFSET_X	(CANVAS_MINX + CANVAS_WIDTH/2)
-# define CANVAS_OFFSET_X	934
-// # define CANVAS_OFFSET_Y	(WINY/2)
-# define CANVAS_OFFSET_Y	500
-# define SIDEBAR_AREA_X		268
-
-# define FONT_BIG "-misc-fixed-*-*-*-*-30-*-*-*-*-*-*-*"
-# define FONT_DEFAULT "-misc-fixed-*-*-*-*-15-*-*-*-*-*-*-*"
-// # define FONT "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1"
-// # define FONT "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"
+# include "constants.h"
 
 /********** Structs. **********/
 

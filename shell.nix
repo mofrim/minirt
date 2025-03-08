@@ -11,6 +11,7 @@ pkgs.mkShell {
     qt5.qtwayland
     xorg.fontmiscmisc
     xlsfonts
+    xorg.xset
   ];
 
   shellHook = ''
