@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 13:59:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 09:29:03 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef enum e_obj
 typedef struct s_sphere
 {
 	t_v3	center;
-	double	radius;
+	double	r;
+	double	r_squared;
 	t_colr	colr;
 } t_sphere;
 
@@ -75,6 +76,8 @@ typedef struct s_camera {
     t_v3	look_at;
     t_v3	up;
     double	fov;
+	double	view_width;
+	double	canvas_to_view_ratio;
 }	t_camera;
 
 /* The objects linked list. */

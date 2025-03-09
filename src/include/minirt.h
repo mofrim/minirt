@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 14:41:10 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 09:58:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ typedef struct s_v2
 typedef struct s_scene
 {
 	t_camera	*cam;
-	t_amb_light	alight;
+	t_amb_light	*alight;
 	t_objlst	*objects;
+	int			subsample;
 }	t_scene;
 
 
@@ -115,6 +116,7 @@ void	draw_disk(t_pxl p, int radius, char *colr, t_mrt mrt);
 
 /********** Do stuff. **********/
 
+void 	draw_axis(t_mrt mrt);
 void	do_stuff(t_mrt mrt);
 
 #endif

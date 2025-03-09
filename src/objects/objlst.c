@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:53:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:51:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 08:56:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,13 @@ void	objlst_print(t_objlst *lst)
 	{
 		if (lst->type == SPHERE)
 		{
-			printf("  sphere { center=(%f,%f,%f), radius=%f,"
+			printf("  sphere { center=(%f,%f,%f), r=%f, r**2=%f"
 					" colr=[%d,%d,%d]}\n",
 					((t_sphere *)lst->obj)->center.x,
 					((t_sphere *)lst->obj)->center.y,
 					((t_sphere *)lst->obj)->center.z,
-					((t_sphere *)lst->obj)->radius,
+					((t_sphere *)lst->obj)->r,
+					((t_sphere *)lst->obj)->r_squared,
 					((t_sphere *)lst->obj)->colr.r,
 					((t_sphere *)lst->obj)->colr.g,
 					((t_sphere *)lst->obj)->colr.b);

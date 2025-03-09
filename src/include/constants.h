@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:09:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/07 22:03:52 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 09:32:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONSTANTS_H
 
 # ifdef RUBI
-
 #  define WINX 				1200
 #  define WINY 				700
 /* The Area reserved for the sidebar. */
@@ -33,11 +32,9 @@
 #  define FONT_DEFAULT "-misc-fixed-*-*-*-*-15-*-*-*-*-*-*-*"
 // # define FONT "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1"
 // # define FONT "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"
-
 # endif
 
 # ifdef DEFAULT
-
 #  define WINX 				1600
 #  define WINY 				1000
 /* The Area reserved for the sidebar. */
@@ -56,7 +53,9 @@
 #  define FONT_DEFAULT "-misc-fixed-*-*-*-*-15-*-*-*-*-*-*-*"
 // # define FONT "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1"
 // # define FONT "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"
-
 # endif
+
+/* Infinity. Kind of. For now.... */
+# define INF	10000.0
 
 #endif
