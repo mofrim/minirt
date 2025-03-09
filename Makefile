@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/09 11:49:34 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/09 13:16:26 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS		=	main.c \
 					v3_basic_ops.c \
 					v3_advanced_ops.c \
 					put_pixel_string.c \
-					disk.c \
 					sidebar.c \
 					sidebar_print_text.c \
 					objlst.c \
