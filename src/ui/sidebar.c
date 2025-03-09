@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:01:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 10:30:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 11:49:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void show_sidebar(t_mrt mrt)
 	print_menu_text(mrt, 15, 20 + (++i) * 15, "-- Current Map Params --");
 	i++;
 	print_mapinfo(mrt, "subsample: ",mrt.scene->subsample, &i);
-	print_mapinfo_float(mrt, "fov: ",mrt.scene->cam->fov, &i);
+	print_mapinfo(mrt, "fov: ", rad2deg_int(mrt.scene->cam->fov), &i);
 }
 
 static void	draw_sidebar_seperator(t_mrt mrt)
