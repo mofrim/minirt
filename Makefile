@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/09 10:24:41 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/09 11:49:34 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS		=	main.c \
 					print_scene.c \
 					tcolr_to_int.c \
 					raytrace.c \
+					math_utils.c \
 					do_stuff.c
 
 OBJDIR	=	obj
