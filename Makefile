@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/09 13:16:26 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/09 13:22:37 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS		=	main.c \
 					close_btn_handler.c \
 					init_mrt.c \
 					kbd_input_handler.c \
+					kbd_handle_fov_sub.c \
 					rgb_to_int.c \
 					vec3_new.c \
 					vec3_basic_ops.c \

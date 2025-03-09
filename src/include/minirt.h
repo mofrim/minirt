@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 11:48:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:18:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,8 @@ typedef struct s_mrt
 
 t_scene	*parse_scene(char *scene_file);
 t_mrt	*init_mrt(t_scene *scene);
-int		close_btn_handler(t_mrt *mrt);
-int		kbd_input_handler(int key, t_mrt *mrt);
-void	show_sidebar(t_mrt mrt);
-void	raytrace(t_mrt mrt);
 
-/********** Utilities. **********/
+/********** Utils. **********/
 
 int		rgb_to_int(char *rgbstr);
 void	int_to_rgb(int rgb_arr[3], int rgb_num);
@@ -110,9 +106,16 @@ int		tcolr_to_int(t_colr colr);
 t_colr	int_to_tcolr(int int_colr);
 int		rad2deg_int(double rad);
 
-/********** Objects. **********/
+/********** UI. **********/
 
-void	draw_disk(t_pxl p, int radius, char *colr, t_mrt mrt);
+int		close_btn_handler(t_mrt *mrt);
+int		kbd_input_handler(int key, t_mrt *mrt);
+void	show_sidebar(t_mrt mrt);
+void	redraw_win(t_mrt mrt);
+
+/********** Trace the rays. **********/
+
+void	raytrace(t_mrt mrt);
 
 /********** Do stuff. **********/
 
