@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 09:58:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 10:42:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_v2
 	double	x2;
 }	t_v2;
 
-
 /* The scene master struct. */
 typedef struct s_scene
 {
@@ -72,7 +71,6 @@ typedef struct s_scene
 	t_objlst	*objects;
 	int			subsample;
 }	t_scene;
-
 
 /* A pixel on our screen. */
 typedef struct s_pxl
@@ -117,7 +115,7 @@ void	draw_disk(t_pxl p, int radius, char *colr, t_mrt mrt);
 
 /********** Do stuff. **********/
 
-void 	draw_axis(t_mrt mrt);
+void	draw_axis(t_mrt mrt);
 void	do_stuff(t_mrt mrt);
 
 #endif
