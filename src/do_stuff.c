@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 10:08:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:28:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	init_cam(t_mrt mrt)
 
 	mrt.scene->cam = malloc(sizeof(t_camera));
 	cam = mrt.scene->cam;
-	cam->pos = v3_new(0, 0, -1);
-	cam->look_at = v3_new(0, 0, 1);
+	cam->pos = v3_new(0, 5, 10);
+	cam->look_at = v3_new(0, -1, 0);
 	cam->fov = M_PI_4;
 	cam->up = v3_new(0, 1, 0);
 	cam->view_width = 2 * tan(cam->fov/2);
@@ -56,10 +56,19 @@ void	init_objs(t_mrt mrt)
 	*sphere2 = (t_sphere){v3_new(2, 0, 10), 2, 2 * 2, (t_colr){0, 255, 0}};
 	t_sphere	*sphere3 = malloc(sizeof(t_sphere));
 	*sphere3 = (t_sphere){v3_new(-2, 0, 9), 1.5, 1.5 * 1.5, (t_colr){0, 0, 142}};
+	t_sphere	*sphere4 = malloc(sizeof(t_sphere));
+	*sphere4 = (t_sphere){v3_new(-12, 0, 9), 1.5, 1.5 * 1.5, (t_colr){42, 42, 142}};
+	t_sphere	*sphere5 = malloc(sizeof(t_sphere));
+	*sphere5 = (t_sphere){v3_new(0, 12, 9), 1.5, 1.5 * 1.5, (t_colr){42, 42, 142}};
+	t_sphere	*sphere6 = malloc(sizeof(t_sphere));
+	*sphere6 = (t_sphere){v3_new(-6, 0, 9), 1.5, 1.5 * 1.5, (t_colr){42, 42, 142}};
 	mrt.scene->objects = NULL;
 	objlst_add_back(objs, objlst_new(SPHERE, sphere1));
 	objlst_add_back(objs, objlst_new(SPHERE, sphere2));
 	objlst_add_back(objs, objlst_new(SPHERE, sphere3));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere4));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere5));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere6));
 }
 
 void	init_lights(t_mrt mrt)
