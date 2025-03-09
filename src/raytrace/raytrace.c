@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 09:51:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:10:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ t_v3	canvas2viewport(int cx, int cy, double cvr);
 t_colr	traceray(t_objlst *objs, t_v3 cam_pos, t_v3 d, double t_min, double t_max);
 t_v2	intersectraysphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere);
 
-// TODOs:
-// 1) implement the camera to obey the FOV input param from the scene file
-// 2) implement resolution setting
-
+/**
+ * The main raytracing routine.
+ *
+ * So far this is complete. Any further development should be happening in the
+ * subroutines.
+ */
 void	raytrace(t_mrt mrt)
 {
 	int		cx;
@@ -44,7 +46,6 @@ void	raytrace(t_mrt mrt)
 	}
 }
 
-
 /**
  * Converts canvas coords to viewport coords.
  *
@@ -54,20 +55,20 @@ void	raytrace(t_mrt mrt)
  * We always want our viewport to be at a 1 unit distance from our camera ->
  * z = 1.
  */
-// QUESTION: where to implement a `resolution` or `dpi` notion in here???
-// it must be somehwere
 // QUESTION: why does it work like that?!?!?!?! I mean: why dividing by ratio
 // yields the correct ascpect?
-t_v3	canvas2viewport(int cx, int cy, double canvas_to_viewport_ratio)
+t_v3	canvas2viewport(int cx, int cy, double cvr)
 { 
 	t_v3	viewport_vec;
 
-	viewport_vec.x = (double)cx * canvas_to_viewport_ratio;
-	viewport_vec.y = (double)cy * canvas_to_viewport_ratio;
+	viewport_vec.x = (double)cx * cvr;
+	viewport_vec.y = (double)cy * cvr;
 	viewport_vec.z = 1;
 	return (viewport_vec);
 }
 
+// TODO: make this work for several objects and intersections. So this will only
+// return a `closest_obj` not a specific obj type.
 t_colr	traceray(t_objlst *objs, t_v3 cam_pos, t_v3 d, double t_min, double t_max)
 {
 	double		closest_t;
