@@ -6,18 +6,17 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 09:29:03 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:47:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
 # include "vec3.h"
 # include "v3.h"
+# include "mtrx.h"
 # include <stdint.h>
-
 
 /* The RGB color struct. */
 typedef struct s_colr
@@ -33,7 +32,7 @@ typedef enum e_obj
 	PLANE,
 	SPHERE,
 	CYLINDER
-} t_objtype;
+}	t_objtype;
 
 /* WARNING: the subject specifies that the *diameter* will be specified in the
  * scene.rt... still the radius is the number we will calculate with. this
@@ -45,7 +44,7 @@ typedef struct s_sphere
 	double	r;
 	double	r_squared;
 	t_colr	colr;
-} t_sphere;
+}	t_sphere;
 
 typedef struct s_cylinder
 {
@@ -54,7 +53,7 @@ typedef struct s_cylinder
 	double	radius;
 	double	height;
 	t_colr	colr;
-} t_cylinder;
+}	t_cylinder;
 
 /* pop = Point On Plane :) */
 typedef struct s_plane
@@ -62,7 +61,7 @@ typedef struct s_plane
 	t_v3	pop;
 	t_v3	normal;
 	t_colr	colr;
-} t_plane;
+}	t_plane;
 
 typedef struct s_amb_light
 {
@@ -72,12 +71,12 @@ typedef struct s_amb_light
 
 /* Camera struct. */
 typedef struct s_camera {
-    t_v3	pos;
-    t_v3	look_at;
-    t_v3	up;
-    double	fov;
+	t_v3	pos;
+	t_v3	orient;
+	t_mtrx	rot;
+	double	fov;
 	double	view_width;
-	double	canvas_to_view_ratio;
+	double	cvr;
 }	t_camera;
 
 /* The objects linked list. */
@@ -86,7 +85,7 @@ typedef struct s_objlst
 	t_objtype		type;
 	void			*obj;
 	struct s_objlst	*next;
-} t_objlst;
+}	t_objlst;
 
 /********** Objlst llist funcs. **********/
 

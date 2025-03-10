@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 13:20:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 13:21:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/09 18:39:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	handle_fov(int key, t_mrt mrt)
 	{
 		cam->fov -= 0.1;
 		cam->view_width = 2 * tan(cam->fov/2);
-		cam->canvas_to_view_ratio = cam->view_width / CANVAS_WIDTH;
+		cam->cvr = cam->view_width / CANVAS_WIDTH;
 		redraw_win(mrt);
 	}
 	if (key == 48 && (cam->fov + 0.1 < M_PI))
 	{
 		cam->fov += 0.1;
 		cam->view_width = 2 * tan(cam->fov/2);
-		cam->canvas_to_view_ratio = cam->view_width / CANVAS_WIDTH;
+		cam->cvr = cam->view_width / CANVAS_WIDTH;
 		redraw_win(mrt);
 	}
 }

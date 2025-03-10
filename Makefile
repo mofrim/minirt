@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/09 13:22:37 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/10 09:34:58 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ SRCS		=	main.c \
 					v3_new.c \
 					v3_basic_ops.c \
 					v3_advanced_ops.c \
+					mtrx_ops.c \
+					mtrx_new_print.c \
+					get_rotmtrx.c \
 					put_pixel_string.c \
 					sidebar.c \
 					sidebar_print_text.c \
@@ -65,7 +68,8 @@ MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/vec3.h \
 							$(INC_DIR)/v3.h \
 							$(INC_DIR)/constants.h \
-							$(INC_DIR)/objects.h
+							$(INC_DIR)/objects.h \
+							$(INC_DIR)/mtrx.h
 
 # change this back to 'cc' @school for eval
 CC			=	clang

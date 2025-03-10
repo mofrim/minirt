@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 13:10:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:49:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	raytrace(t_mrt mrt)
 {
 	int		cx;
 	int		cy;
-	t_v3	d;
+	t_v3	ray_dir;
 	t_colr	px_colr;
 
 	cx = PIXEL_MINX;
@@ -36,9 +36,11 @@ void	raytrace(t_mrt mrt)
 		cy = PIXEL_MINY;
 		while (cy < PIXEL_MAXY)
 		{
-			d = canvas2viewport(cx, cy, mrt.scene->cam->canvas_to_view_ratio);
+			ray_dir = mtrx_prod_vec(mrt.scene->cam->rot,
+					canvas2viewport(cx, cy, mrt.scene->cam->cvr));
 			if (!(cy % mrt.scene->subsample))
-				px_colr = traceray(mrt.scene->objects, mrt.scene->cam->pos, d, 1, INF);
+				px_colr = traceray(mrt.scene->objects, mrt.scene->cam->pos,
+						ray_dir, 1, INF);
 			put_pixel_canvas_rt(mrt, (t_pxl){cx, cy}, px_colr);
 			cy++;
 		}
@@ -54,9 +56,16 @@ void	raytrace(t_mrt mrt)
  * the canvas2viewport_ratio.
  * We always want our viewport to be at a 1 unit distance from our camera ->
  * z = 1.
+ *
+ * Explanation vor the calculation:
+ * 	
+ * 	The book says V_x = C_x * V_w/C_w and V_y = C_y * V_h / C_h, where V_x, V_y
+ * 	are the corresponding viewport coords to the Canvas-coords C_x, C_y. V_w,
+ * 	V_h and C_w,C_h are the viewport / Canvas width / height. In our case the
+ * 	viewport height V_h = V_w * WINY / CANVAS_WIDTH = V_w * C_h / C_w
+ * 	=> V_h/C_h  = V_w / C_w. So the same canvas_to_view_ratio =: cvr hast to be
+ * 	applied to both coords.
  */
-// QUESTION: why does it work like that?!?!?!?! I mean: why dividing by ratio
-// yields the correct ascpect?
 t_v3	canvas2viewport(int cx, int cy, double cvr)
 { 
 	t_v3	viewport_vec;

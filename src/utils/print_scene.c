@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 13:30:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:32:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 static void	print_cam(t_camera cam)
 {
 	printf("  pos=(%f,%f,%f), look_at=(%f,%f,%f), fov=%f\n",
-			cam.pos.x, cam.pos.y, cam.pos.z,
-			cam.look_at.x, cam.look_at.y, cam.look_at.z,
-			cam.fov);
+		cam.pos.x, cam.pos.y, cam.pos.z,
+		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
 }
 
 /**

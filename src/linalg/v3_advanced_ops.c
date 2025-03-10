@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:13:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 19:21:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:43:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,15 @@ t_v3	v3_cross(t_v3 v, t_v3 w)
 double	v3_norm(t_v3 v)
 {
 	return (sqrt(v3_dot(v, v)));
+}
+
+/* Returns the normalized version of a t_v3. */
+t_v3	v3_get_norm(t_v3 v)
+{
+	double	norm;
+
+	norm = sqrt(v3_dot(v, v));
+	if (norm == 0.0)
+		return ((t_v3){0, 0, 0});
+	return (v3_mult(v, 1.0/norm));
 }

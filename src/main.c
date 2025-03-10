@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:55:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 19:34:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:46:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int	main(int ac, char **av)
 
 // int	main(void)
 // {
-// 	t_v3 v1 = v3_new(1,0,0);
-// 	v1 = v3_add_scalar(v1, 4.2);
-// 	printf("v1.x = %f, v1.y = %f, v1.z = %f\n", v1.x, v1.y, v1.z);
-// 	printf("sizeof(t_v3) = %ld\n", sizeof(t_v3));
+// 	t_mtrx a = get_rotmtrx(v3_get_norm((t_v3){0, -5, 10}));
+// 	mtrx_print(a);
 // 	return (0);
 // }
