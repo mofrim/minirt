@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/10 09:49:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:14:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_v3	canvas2viewport(int cx, int cy, double cvr);
+t_v3	canvas2viewport(int cx, int cy, t_camera cam);
 t_colr	traceray(t_objlst *objs, t_v3 cam_pos, t_v3 d, double t_min, double t_max);
 t_v2	intersectraysphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere);
 
@@ -36,8 +36,7 @@ void	raytrace(t_mrt mrt)
 		cy = PIXEL_MINY;
 		while (cy < PIXEL_MAXY)
 		{
-			ray_dir = mtrx_prod_vec(mrt.scene->cam->rot,
-					canvas2viewport(cx, cy, mrt.scene->cam->cvr));
+			ray_dir = canvas2viewport(cx, cy, *mrt.scene->cam);
 			if (!(cy % mrt.scene->subsample))
 				px_colr = traceray(mrt.scene->objects, mrt.scene->cam->pos,
 						ray_dir, 1, INF);
@@ -66,14 +65,14 @@ void	raytrace(t_mrt mrt)
  * 	=> V_h/C_h  = V_w / C_w. So the same canvas_to_view_ratio =: cvr hast to be
  * 	applied to both coords.
  */
-t_v3	canvas2viewport(int cx, int cy, double cvr)
+t_v3	canvas2viewport(int cx, int cy, t_camera cam)
 { 
 	t_v3	viewport_vec;
 
-	viewport_vec.x = (double)cx * cvr;
-	viewport_vec.y = (double)cy * cvr;
+	viewport_vec.x = (double)cx * cam.cvr;
+	viewport_vec.y = (double)cy * cam.cvr;
 	viewport_vec.z = 1;
-	return (viewport_vec);
+	return (mtrx_prod_vec(cam.rot, viewport_vec));
 }
 
 // TODO: make this work for several objects and intersections. So this will only
