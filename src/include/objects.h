@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 20:51:57 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:52:03 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef enum e_obj
 typedef struct s_sphere
 {
 	t_v3	center;
-	double	radius;
+	double	r;
+	double	r_squared;
 	t_colr	colr;
 }	t_sphere;
 
@@ -80,10 +81,12 @@ typedef struct s_amb_light
 
 /* Camera struct. */
 typedef struct s_camera {
-    t_v3	pos;
-    t_v3	look_at;
-    t_v3	up;
-    double	fov;
+	t_v3	pos;
+	t_v3	orient;
+	t_mtrx	rot;
+	double	fov;
+	double	view_width;
+	double	cvr;
 }	t_camera;
 
 /* The objects linked list. */

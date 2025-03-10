@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/08 19:22:55 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:57:03 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_camera parse_camera(Parser *parser)
     t_camera camera;
 
     camera.pos = parse_point(parser);
-    camera.look_at = parse_vector(parser);
+    camera.orient = parse_vector(parser);
     camera.fov = parse_number(parser);
     return camera;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objlst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:53:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 12:51:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/10 14:47:09 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_objlst	*objlst_new(t_objtype type, void *obj)
 		new->obj = (t_plane *)obj;
 	if (type == CYLINDER)
 		new->obj = (t_cylinder *)obj;
+	if (type == LIGHT)
+		new->obj = (t_light *)obj;
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/08 19:05:58 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:43:02 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ Token *tokenizer_next(Tokenizer *tokenizer)
     // Skip whitespace
     while (isspace(tokenizer->input[tokenizer->position]))
         tokenizer->position++;
-
     // Check for end of input
     if (tokenizer->input[tokenizer->position] == '\0')
         return NULL;
-
     // Create a new token
     Token *token = malloc(sizeof(Token));
     if (!token)
         return NULL;
-
     // Check for keyword
     if (isalpha(tokenizer->input[tokenizer->position]))
     {
@@ -63,7 +60,6 @@ Token *tokenizer_next(Tokenizer *tokenizer)
         token->type = TOKEN_TYPE_SYMBOL;
         token->value = parse_symbol(tokenizer);
     }
-
     return token;
 }
 
