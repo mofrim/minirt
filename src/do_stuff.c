@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 08:46:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:18:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	init_cam(t_mrt mrt)
 
 	mrt.scene->cam = malloc(sizeof(t_camera));
 	cam = mrt.scene->cam;
-	// cam->pos = v3_new(0, 20, 13);
-	// cam->orient = v3_new(0, -1, 0);
-	cam->pos = v3_new(0, 0, -1);
-	cam->orient = v3_new(0, 0, 1);
+	cam->pos = v3_new(0, 4, -1);
+	cam->orient = v3_new(0, -1, 1.5);
+	// cam->pos = v3_new(0, 0, -1);
+	// cam->orient = v3_new(0, 0, 1);
 	cam->fov = M_PI_4;
 	cam->rot = get_rotmtrx(v3_get_norm(cam->orient));
 	cam->view_width = 2 * tan(cam->fov/2);
@@ -77,15 +77,15 @@ void	init_lights(t_mrt mrt)
 {
 	t_objlst	**objs;
 
-	objs = &mrt.scene->objects;
 	mrt.scene->alight = malloc(sizeof(t_amb_light));
 	mrt.scene->alight->ratio = 0.2;
 	mrt.scene->alight->colr = (t_colr){42, 42, 42};
 
+	objs = &mrt.scene->objects;
 	t_light	*light1 = malloc(sizeof(t_light));
-	light1->brightness = 0.5;
+	light1->bright = 1.0;
 	light1->colr = (t_colr){255, 255, 255};
-	light1->pos = (t_v3){0, 30, 10};
+	light1->pos = (t_v3){0, 10, 10};
 	objlst_add_back(objs, objlst_new(LIGHT, light1));
 }
 

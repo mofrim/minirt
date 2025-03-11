@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_scene.c                                      :+:      :+:    :+:   */
+/*   utils_raytrace.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 10:10:34 by fmaurer          ###   ########.fr       */
+/*   Created: 2025/03/11 09:32:55 by fmaurer           #+#    #+#             */
+/*   Updated: 2025/03/11 09:41:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	print_cam(t_camera cam)
+t_colr	colr_mult(t_colr c, double i)
 {
-	printf("  pos=(%f,%f,%f), look_at=(%f,%f,%f), fov=%f\n",
-		cam.pos.x, cam.pos.y, cam.pos.z,
-		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
-}
+	t_colr	res;
 
-/**
- * Print the contents of the scene struct
- *
- * Only for debugging and info purpose.
- */
-void	print_scene(t_scene scene)
-{
-	printf("-- cam --\n");
-	print_cam(*scene.cam);
-	printf("-- objects --\n");
-	objlst_print(scene.objects);
+	res.r = (c.r * i > 255) * 255 + (c.r * i <= 255) * (uint8_t)(c.r * i);
+	res.g = (c.g * i > 255) * 255 + (c.g * i <= 255) * (uint8_t)(c.g * i);
+	res.b = (c.b * i > 255) * 255 + (c.b * i <= 255) * (uint8_t)(c.b * i);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 08:39:10 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 10:20:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_light
  {
  	t_v3	pos;
  	t_colr	colr;
- 	double	brightness;
+ 	double	bright;
  }	t_light;
 
 /* Camera struct. */

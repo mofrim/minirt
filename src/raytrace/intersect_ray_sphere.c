@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 23:33:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 08:16:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:11:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ double	intersect_ray_sphere(t_v3 cam_pos, t_v3 ray_dir, t_sphere *sphere)
 	disc = abc.y * abc.y - 4 * abc.x * abc.z;
 	if (disc < 0)
 		return (INF);
-	res.x1 = (-abc.y + sqrt(disc) / (2 * abc.x));
-	res.x2 = (-abc.y - sqrt(disc) / (2 * abc.x));
+	res.x1 = (-abc.y + sqrt(disc)) / (2 * abc.x);
+	res.x2 = (-abc.y - sqrt(disc)) / (2 * abc.x);
 	if (VIEWZ < res.x1 && res.x1 < INF && res.x1 < res.x2)
 		return (res.x1);
 	if (VIEWZ < res.x2 && res.x2 < INF)

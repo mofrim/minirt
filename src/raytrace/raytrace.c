@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 09:07:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 10:59:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,12 @@ t_colr	traceray(t_mrt mrt , t_v3 ray_dir)
 		}
 		objs = objs->next;
 	}
-	return (get_object_colr(*mrt.scene, closest_obj, ray_dir,
-				closest_t));
+	if (closest_t != INF )
+	{
+		printf("hitpoint:\n");
+		v3_print(v3_add_vec(mrt.scene->cam->pos, v3_mult(ray_dir, closest_t)));
+		printf("\n");
+	}
+	return (get_object_colr(*mrt.scene, closest_obj,
+				v3_add_vec(mrt.scene->cam->pos, v3_mult(ray_dir, closest_t))));
 }

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:49:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/10 09:42:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 10:37:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ double	v3_dot(t_v3 v, t_v3 w);
 t_v3	v3_cross(t_v3 v, t_v3 w);
 double	v3_norm(t_v3 v);
 t_v3	v3_get_norm(t_v3 v);
+void	v3_print(t_v3 v);
 
 #endif

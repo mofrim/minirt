@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:55:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/10 09:46:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 09:39:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	main(int ac, char **av)
 
 // int	main(void)
 // {
-// 	t_mtrx a = get_rotmtrx(v3_get_norm((t_v3){0, -5, 10}));
-// 	mtrx_print(a);
+// 	uint8_t a = 200;
+// 	double	b = 2.0;
+// 	printf("(uint8_t)(a * b) = %d\n", (uint8_t)(a * b));
 // 	return (0);
 // }
