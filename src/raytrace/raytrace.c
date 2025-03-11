@@ -6,15 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/10 15:14:05 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 09:07:46 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 t_v3	canvas2viewport(int cx, int cy, t_camera cam);
-t_colr	traceray(t_objlst *objs, t_v3 cam_pos, t_v3 d, double t_min, double t_max);
-t_v2	intersectraysphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere);
+t_colr	traceray(t_mrt mrt, t_v3 ray_dir);
 
 /**
  * The main raytracing routine.
@@ -38,8 +37,7 @@ void	raytrace(t_mrt mrt)
 		{
 			ray_dir = canvas2viewport(cx, cy, *mrt.scene->cam);
 			if (!(cy % mrt.scene->subsample))
-				px_colr = traceray(mrt.scene->objects, mrt.scene->cam->pos,
-						ray_dir, 1, INF);
+				px_colr = traceray(mrt, ray_dir);
 			put_pixel_canvas_rt(mrt, (t_pxl){cx, cy}, px_colr);
 			cy++;
 		}
@@ -71,59 +69,39 @@ t_v3	canvas2viewport(int cx, int cy, t_camera cam)
 
 	viewport_vec.x = (double)cx * cam.cvr;
 	viewport_vec.y = (double)cy * cam.cvr;
-	viewport_vec.z = 1;
+	viewport_vec.z = VIEWZ;
 	return (mtrx_prod_vec(cam.rot, viewport_vec));
 }
 
-// TODO: make this work for several objects and intersections. So this will only
-// return a `closest_obj` not a specific obj type.
-t_colr	traceray(t_objlst *objs, t_v3 cam_pos, t_v3 d, double t_min, double t_max)
+/**
+ * The main action of tracing the rays intersection.
+ *
+ * Checks for the closest intersection with any obj from the objlst. Returns the
+ * color the pixel to be printed.
+ */
+t_colr	traceray(t_mrt mrt , t_v3 ray_dir)
 {
 	double		closest_t;
-	t_sphere	*closest_sphere;
-	t_v2		t;
+	t_objlst	*closest_obj;
+	t_objlst	*objs;
+	double		t;
 
+	objs = mrt.scene->objects;
 	closest_t = INF;
-	closest_sphere = NULL;
+	closest_obj = NULL;
 	while (objs)
 	{
-		if (objs->type == SPHERE)
+		if (objs->type != LIGHT )
 		{
-			t = intersectraysphere(cam_pos, d, objs->obj);
-			if (t_min < t.x1 && t.x1 < t_max && t.x1 < closest_t)
+			t = intersect_ray_obj(mrt.scene->cam->pos, ray_dir, objs);
+			if (VIEWZ < t && t < INF && t < closest_t)
 			{
-				closest_t = t.x1;
-				closest_sphere = objs->obj;
-			}
-			if (t_min < t.x2 && t.x2 < t_max && t.x2 < closest_t)
-			{
-				closest_t = t.x2;
-				closest_sphere = objs->obj;
+				closest_t = t;
+				closest_obj = objs;
 			}
 		}
 		objs = objs->next;
 	}
-	if (closest_sphere == NULL)
-		return ((t_colr){0, 0, 0});
-	return (closest_sphere->colr);
-}
-
-/* The intersection of the ray with the object. The heart of raytracing. */
-t_v2	intersectraysphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere)
-{
-	t_v2	res;
-	t_v3	co;
-	t_v3	abc;
-	double	disc;
-
-	co = v3_add_vec(cam_pos, v3_mult(sphere->center, -1));
-	abc.x = v3_dot(d, d);
-	abc.y = 2 * v3_dot(co, d);
-	abc.z = v3_dot(co, co) - sphere->r_squared;
-	disc = abc.y * abc.y - 4 * abc.x * abc.z;
-	if (disc < 0)
-		return ((t_v2){INF, INF});
-	res.x1 = (-abc.y + sqrt(disc) / (2 * abc.x));
-	res.x1 = (-abc.y - sqrt(disc) / (2 * abc.x));
-	return (res);
+	return (get_object_colr(*mrt.scene, closest_obj, ray_dir,
+				closest_t));
 }

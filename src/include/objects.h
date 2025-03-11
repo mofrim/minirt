@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/10 09:47:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 08:39:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_colr
 /* Object structs */
 typedef enum e_obj
 {
+	LIGHT,
 	PLANE,
 	SPHERE,
 	CYLINDER
@@ -68,6 +69,13 @@ typedef struct s_amb_light
 	double	ratio;
 	t_colr	colr;
 }	t_amb_light;
+
+typedef struct s_light
+ {
+ 	t_v3	pos;
+ 	t_colr	colr;
+ 	double	brightness;
+ }	t_light;
 
 /* Camera struct. */
 typedef struct s_camera {
