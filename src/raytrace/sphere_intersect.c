@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 23:33:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 12:11:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/11 23:10:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-/* The intersection of the ray with the object. The heart of raytracing. */
+/* Intersect ray with the sphere. */
 // QUESTION: is returning the smaller of both solutions a good approach? It
 // might also be possible that one of them is smaller than 0, thus it it is
 // invalid and the other, even though it is greater, is the correct one!

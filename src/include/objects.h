@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 10:20:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/12 00:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ typedef struct s_plane
 
 typedef struct s_amb_light
 {
-	double	ratio;
+	double	bright;
 	t_colr	colr;
 }	t_amb_light;
 
 typedef struct s_light
- {
- 	t_v3	pos;
- 	t_colr	colr;
- 	double	bright;
- }	t_light;
+{
+	t_v3	pos;
+	t_colr	colr;
+	double	bright;
+}	t_light;
 
 /* Camera struct. */
 typedef struct s_camera {

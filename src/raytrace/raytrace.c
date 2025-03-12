@@ -6,14 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 10:59:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/12 00:14:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 t_v3	canvas2viewport(int cx, int cy, t_camera cam);
-t_colr	traceray(t_mrt mrt, t_v3 ray_dir);
+t_colr	traceray(t_scene scene, t_v3 ray_dir);
 
 /**
  * The main raytracing routine.
@@ -37,7 +37,7 @@ void	raytrace(t_mrt mrt)
 		{
 			ray_dir = canvas2viewport(cx, cy, *mrt.scene->cam);
 			if (!(cy % mrt.scene->subsample))
-				px_colr = traceray(mrt, ray_dir);
+				px_colr = traceray(*mrt.scene, ray_dir);
 			put_pixel_canvas_rt(mrt, (t_pxl){cx, cy}, px_colr);
 			cy++;
 		}
@@ -64,7 +64,7 @@ void	raytrace(t_mrt mrt)
  * 	applied to both coords.
  */
 t_v3	canvas2viewport(int cx, int cy, t_camera cam)
-{ 
+{
 	t_v3	viewport_vec;
 
 	viewport_vec.x = (double)cx * cam.cvr;
@@ -79,21 +79,21 @@ t_v3	canvas2viewport(int cx, int cy, t_camera cam)
  * Checks for the closest intersection with any obj from the objlst. Returns the
  * color the pixel to be printed.
  */
-t_colr	traceray(t_mrt mrt , t_v3 ray_dir)
+t_colr	traceray(t_scene scene, t_v3 ray_dir)
 {
 	double		closest_t;
 	t_objlst	*closest_obj;
 	t_objlst	*objs;
 	double		t;
 
-	objs = mrt.scene->objects;
+	objs = scene.objects;
 	closest_t = INF;
 	closest_obj = NULL;
 	while (objs)
 	{
-		if (objs->type != LIGHT )
+		if (objs->type != LIGHT)
 		{
-			t = intersect_ray_obj(mrt.scene->cam->pos, ray_dir, objs);
+			t = intersect_ray_obj(scene.cam->pos, ray_dir, objs);
 			if (VIEWZ < t && t < INF && t < closest_t)
 			{
 				closest_t = t;
@@ -102,12 +102,6 @@ t_colr	traceray(t_mrt mrt , t_v3 ray_dir)
 		}
 		objs = objs->next;
 	}
-	if (closest_t != INF )
-	{
-		printf("hitpoint:\n");
-		v3_print(v3_add_vec(mrt.scene->cam->pos, v3_mult(ray_dir, closest_t)));
-		printf("\n");
-	}
-	return (get_object_colr(*mrt.scene, closest_obj,
-				v3_add_vec(mrt.scene->cam->pos, v3_mult(ray_dir, closest_t))));
+	return (get_object_colr(scene, closest_obj,
+			v3_add_vec(scene.cam->pos, v3_mult(ray_dir, closest_t))));
 }

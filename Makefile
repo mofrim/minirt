@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 12:55:36 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/11 10:10:26 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/12 10:21:57 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,9 @@ SRCS		=	main.c \
 					math_utils.c \
 					get_object_colr.c \
 					intersect_ray_obj.c \
-					intersect_ray_sphere.c \
-					utils_raytrace.c \
+					sphere_intersect.c \
+					sphere_colr.c \
+					colr_utils.c \
 					do_stuff.c
 
 OBJDIR	=	obj

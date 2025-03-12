@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:55:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 09:39:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/12 09:43:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int	main(int ac, char **av)
 
 // int	main(void)
 // {
-// 	uint8_t a = 200;
-// 	double	b = 2.0;
-// 	printf("(uint8_t)(a * b) = %d\n", (uint8_t)(a * b));
+// 	t_colr a = {42, 42, 42};
+// 	t_colr b = {0,0,100};
+// 	t_colr c = colr_add_light(a, b);
+// 	colr_print(c, "c");
+//
 // 	return (0);
 // }

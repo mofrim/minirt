@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 09:48:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/12 10:21:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,15 @@ void	redraw_win(t_mrt mrt);
 /********** Trace the rays. **********/
 
 void	raytrace(t_mrt mrt);
-double 	intersect_ray_obj(t_v3 cam_pos, t_v3 ray_dir, t_objlst *obj);
+double	intersect_ray_obj(t_v3 cam_pos, t_v3 ray_dir, t_objlst *obj);
 double	intersect_ray_sphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere);
 t_colr	get_object_colr(t_scene scene, t_objlst *close_obj, t_v3 hitpoint);
 t_colr	colr_mult(t_colr c, double i);
+t_colr	colr_add_colr(t_colr c1, t_colr c2);
+void	colr_print(t_colr c, char *name);
+t_colr	colr_add_light(t_colr c, t_colr l);
+t_colr	calculate_lights(t_scene scene, t_v3 p, t_v3 n, t_colr obj_colr);
+t_colr	get_sphere_colr(t_scene scene, t_sphere s, t_v3 hitpoint);
 
 /********** Do stuff. **********/
 

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 12:18:32 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/12 10:04:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,24 @@ void	init_lights(t_mrt mrt)
 	t_objlst	**objs;
 
 	mrt.scene->alight = malloc(sizeof(t_amb_light));
-	mrt.scene->alight->ratio = 0.2;
-	mrt.scene->alight->colr = (t_colr){42, 42, 42};
+	mrt.scene->alight->bright = 0.3;
+	mrt.scene->alight->colr = (t_colr){255, 255, 255};
+	// mrt.scene->alight->colr = (t_colr){255, 100, 100};
 
 	objs = &mrt.scene->objects;
+
 	t_light	*light1 = malloc(sizeof(t_light));
 	light1->bright = 1.0;
+	// light1->colr = (t_colr){255, 0, 0};
 	light1->colr = (t_colr){255, 255, 255};
-	light1->pos = (t_v3){0, 10, 10};
+	light1->pos = (t_v3){0, 2.9, 10};
 	objlst_add_back(objs, objlst_new(LIGHT, light1));
+
+	t_light	*light2 = malloc(sizeof(t_light));
+	light2->bright = 0.9;
+	light2->colr = (t_colr){0, 0, 255};
+	light2->pos = (t_v3){0, -2.1, 8};
+	objlst_add_back(objs, objlst_new(LIGHT, light2));
 }
 
 void	init_scene(t_mrt mrt)
