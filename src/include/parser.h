@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:22:49 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/14 15:42:11 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:20:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,19 @@ typedef struct s_tokenizer
 // Define the parser
 typedef struct s_parser {
     t_tokenizer *tokenizer;
-} t_parser;
+}	t_parser;
 
 // Create a new parser
-t_parser    *parser_new(t_tokenizer *tokenizer);
+t_parser	*parser_new(t_tokenizer *tokenizer);
 
 // Parse the stream of tokens and return the AST
-t_scene     *parser_parse(t_parser *parser);
+t_scene	*parser_parse(t_parser *parser);
 
 
 // Free the parser
-void        parser_free(t_parser *parser);
-void        token_free(t_token *token);
-t_v3        parse_v3(t_parser *parser);
+void	parser_free(t_parser *parser);
+void	token_free(t_token *token);
+t_v3	parse_v3(t_parser *parser);
 
 
 // needs to be organized, just to test for now:
@@ -119,9 +119,5 @@ t_sphere	*parse_sphere(t_parser *parser);
 t_plane		*parse_plane(t_parser *parser);
 t_cylinder	*parse_cylinder(t_parser *parser);
 t_colr		parse_color(t_parser *parser);
-
-bool		ft_isspace(char c);
-char		*ft_strndup(const char *src, size_t n);
-
 
 #endif // PARSER_H
