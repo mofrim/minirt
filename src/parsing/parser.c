@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/14 17:00:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:48:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,22 @@ t_scene	*parser_parse(t_parser *parser)
     {
         if (token->type == TOKEN_TYPE_KEYWORD)
         {
+			// FIXME: we are not allowed to use strcmp. but i have a ft_strcmp
+			// in my libft.
             if (strcmp(token->u_value.str, "A") == 0)
                 scene->alight = parse_ambient_light(parser);
+
+			// TODO: we need error checking here. f.ex. the orient-vector of the
+			// camera has to be normalized, i.e. `v3_norm(cam->orient) == 1` has
+			// to hold. IMHO this is a bit of a stupid constraint because it
+			// would be no effort for us to normalize the vector for the user.
+			// But we have to decide that.. if we better stick to the subject
+			// pdf or decide to make our program more convenient.
             else if (strcmp(token->u_value.str, "C") == 0)
-                scene->cam = parse_camera(parser);
+			{
+				scene->cam = parse_camera(parser);
+				printf("scene->cam->fov = %f\n", scene->cam->fov);
+			}
             else if (strcmp(token->u_value.str, "L") == 0)
             {
                 objlst = objlst_new(LIGHT, parse_light(parser));
@@ -106,8 +118,14 @@ t_camera	*parse_camera(t_parser *parser)
     if (!camera)
         return (NULL); // Handle allocation error
     camera->pos = parse_v3(parser);
-    camera->orient = parse_v3(parser);
-    camera->fov = parse_number(parser->tokenizer);
+	// NOTE: for now i just added the normalization here.. but we need to
+	// discuss that.
+	// Also added the other necessary calculations here.
+    camera->orient = v3_get_norm(parse_v3(parser));
+    camera->fov = (M_PI_2/180.0f) * parse_number(parser->tokenizer);
+	camera->rot = get_rotmtrx(camera->orient);
+	camera->view_width = 2 * tan(camera->fov/2);
+	camera->cvr = camera->view_width / CANVAS_WIDTH;
     return camera;
 }
 
@@ -133,6 +151,7 @@ t_sphere *parse_sphere(t_parser *parser)
         return (NULL); // Handle allocation error
     sphere->center = parse_v3(parser);
     sphere->r_squared = parse_number(parser->tokenizer);
+    sphere->r_squared *= sphere->r_squared;
     sphere->colr = parse_color(parser);
     return sphere;
 }

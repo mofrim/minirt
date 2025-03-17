@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/12 17:28:40 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:49:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,20 @@ t_token *tokenizer_next(t_tokenizer *tokenizer)
         return NULL;
     // Create a new token
     t_token *token = malloc(sizeof(t_token));
+
+	// NOTE: see my the `nullcheck` function i have added to the main branch. i
+	// usually go with that because any allocation error is a hint to massive
+	// problems with the host computers system health! and simply exiting the
+	// program in this case seems okay to me.
     if (!token)
         return NULL;
+
     // Check for keyword
     if (ft_isalpha(tokenizer->input[tokenizer->position]))
     {
         token->type = TOKEN_TYPE_KEYWORD;
         token->u_value.str = parse_keyword(tokenizer);
+		printf("token->u_value.str = %s\n", token->u_value.str);
     }
     // Check for identifier
     else if (ft_isalpha(tokenizer->input[tokenizer->position]))

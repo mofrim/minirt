@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/17 20:58:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:42:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,14 @@ void	init_scene(t_mrt mrt)
 	init_objs(mrt);
 	init_cam(mrt);
 	init_lights(mrt);
-	mrt.scene->subsample = 1;
 }
 
 void	do_stuff(t_mrt mrt)
 {
-	init_scene(mrt);
-	show_sidebar(mrt);
+	// init_scene(mrt);
+	mrt.scene->subsample = 1;
 	print_scene(*mrt.scene);
+	show_sidebar(mrt);
 	raytrace(mrt);
-	// draw_axis(mrt);
 }
 
