@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/17 21:30:04 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:56:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ void		put_string(t_mrt mrt, t_pxl pos, char *colr, char *txt);
 void		print_scene(t_scene scene);
 int			tcolr_to_int(t_colr colr);
 t_colr		int_to_tcolr(int int_colr);
+void		error_exit(char *msg);
+void		nullcheck(void *p, char *msg);
 
 /********** Math utils. **********/
 

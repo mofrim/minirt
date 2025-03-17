@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/17 20:03:23 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/17 22:57:18 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRCS		=	main.c \
 					colr_utils.c \
 					do_stuff.c \
 					tokenizer.c \
-					parser.c
+					parser.c \
+					general_utils.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
