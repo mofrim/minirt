@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   ui-utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 11:33:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 13:46:04 by fmaurer          ###   ########.fr       */
+/*   Created: 2025/03/17 19:33:36 by fmaurer           #+#    #+#             */
+/*   Updated: 2025/03/17 19:37:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "minirt.h"
 
-# include "vec3.h"
-
-typedef struct s_ray
+void	draw_axis(t_mrt mrt)
 {
-    t_vec3	orig;
-	t_vec3	dir;
-    t_vec3 (*at)(struct s_ray *self, double t);
-}	t_ray;
+	int		i;
+	t_colr	c;
 
-
-#endif
+	c = (t_colr){42, 42, 42};
+	i = -1;
+	while (++i < CANVAS_WIDTH)
+	{
+		put_pixel_canvas_rt(mrt, (t_pxl){i, 0}, c);
+		put_pixel_canvas_rt(mrt, (t_pxl){-i, 0}, c);
+		put_pixel_canvas_rt(mrt, (t_pxl){0, i}, c);
+		put_pixel_canvas_rt(mrt, (t_pxl){0, -i}, c);
+	}
+}

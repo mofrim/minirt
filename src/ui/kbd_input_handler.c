@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:49:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 13:22:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/16 20:23:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	redraw_win(t_mrt mrt)
 	mlx_clear_window(mrt.mlx, mrt.win);
 	show_sidebar(mrt);
 	raytrace(mrt);
-	draw_axis(mrt);
+	// draw_axis(mrt);
 }
 
 void	handle_quit_destroy_keys(int key, t_mrt *mrt)

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/12 00:14:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:23:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,15 @@ t_v3	canvas2viewport(int cx, int cy, t_camera cam)
 	return (mtrx_prod_vec(cam.rot, viewport_vec));
 }
 
-/**
- * The main action of tracing the rays intersection.
- *
- * Checks for the closest intersection with any obj from the objlst. Returns the
- * color the pixel to be printed.
- */
 t_colr	traceray(t_scene scene, t_v3 ray_dir)
 {
-	double		closest_t;
-	t_objlst	*closest_obj;
-	t_objlst	*objs;
-	double		t;
+	t_intersec	intersec;
+	t_v3		hitpoint;
+	t_colr		colr_at_hitpoint;
 
-	objs = scene.objects;
-	closest_t = INF;
-	closest_obj = NULL;
-	while (objs)
-	{
-		if (objs->type != LIGHT)
-		{
-			t = intersect_ray_obj(scene.cam->pos, ray_dir, objs);
-			if (VIEWZ < t && t < INF && t < closest_t)
-			{
-				closest_t = t;
-				closest_obj = objs;
-			}
-		}
-		objs = objs->next;
-	}
-	return (get_object_colr(scene, closest_obj,
-			v3_add_vec(scene.cam->pos, v3_mult(ray_dir, closest_t))));
+	intersec = intersect_ray_objs(scene.cam->pos, ray_dir, \
+			(t_ray_minmax){VIEWZ, INF}, scene.objects);
+	hitpoint = v3_add_vec(scene.cam->pos, v3_mult(ray_dir, intersec.t));
+	colr_at_hitpoint = get_object_colr(scene, intersec.obj, hitpoint);
+	return (colr_at_hitpoint);
 }

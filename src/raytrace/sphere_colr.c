@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:16:01 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/12 10:24:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:16:39 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ t_v3	get_normal_sphere(t_v3	hitpoint, t_v3 center)
 t_colr	get_sphere_colr(t_scene scene, t_sphere s, t_v3 hitpoint)
 {
 	t_v3	normal_vec;
+	t_colr	colr_at_hitpoint;
 
 	normal_vec = get_normal_sphere(hitpoint, s.center);
-	return (calculate_lights(scene, hitpoint, normal_vec, s.colr));
+	colr_at_hitpoint = calculate_lights(scene, hitpoint, normal_vec, s.colr);
+	return (colr_at_hitpoint);
 }

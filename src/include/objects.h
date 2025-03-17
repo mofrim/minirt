@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:36:20 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/12 00:22:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:15:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,20 @@ typedef struct s_objlst
 	void			*obj;
 	struct s_objlst	*next;
 }	t_objlst;
+
+/* The intersection ray param and the obj in one struct \o/ */
+typedef struct s_intersec
+{
+	double		t;
+	t_objlst	*obj;
+}	t_intersec;
+
+/* The struct holding tmin and tmax as params for intersection funcs. */
+typedef struct s_ray_minmax
+{
+	double	tmin;
+	double	tmax;
+}	t_ray_minmax;
 
 /********** Objlst llist funcs. **********/
 

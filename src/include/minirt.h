@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/12 10:21:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:30:04 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 
 # include "vec3.h"
 # include "v3.h"
-# include "ray.h"
 # include "mtrx.h"
 
 /********** Consts. **********/
@@ -96,49 +95,53 @@ typedef struct s_mrt
 
 /********** General functions. **********/
 
-t_scene	*parse_scene(char *scene_file);
-t_mrt	*init_mrt(t_scene *scene);
+t_scene		*parse_scene(char *scene_file);
+t_mrt		*init_mrt(t_scene *scene);
 
 /********** Utils. **********/
 
-int		rgb_to_int(char *rgbstr);
-void	int_to_rgb(int rgb_arr[3], int rgb_num);
-void	put_pixel_win(t_mrt	mrt, t_pxl pos, char *colr);
-void	put_pixel_canvas(t_mrt	mrt, t_pxl pos, char *colr);
-void	put_pixel_canvas_rt(t_mrt mrt, t_pxl pos, t_colr pxlcolr);
-void	put_string(t_mrt mrt, t_pxl pos, char *colr, char *txt);
-void	print_scene(t_scene scene);
-int		tcolr_to_int(t_colr colr);
-t_colr	int_to_tcolr(int int_colr);
+int			rgb_to_int(char *rgbstr);
+void		int_to_rgb(int rgb_arr[3], int rgb_num);
+void		put_pixel_win(t_mrt	mrt, t_pxl pos, char *colr);
+void		put_pixel_canvas(t_mrt	mrt, t_pxl pos, char *colr);
+void		put_pixel_canvas_rt(t_mrt mrt, t_pxl pos, t_colr pxlcolr);
+void		put_string(t_mrt mrt, t_pxl pos, char *colr, char *txt);
+void		print_scene(t_scene scene);
+int			tcolr_to_int(t_colr colr);
+t_colr		int_to_tcolr(int int_colr);
 
 /********** Math utils. **********/
 
-int		rad2deg_int(double rad);
-t_mtrx	get_rotmtrx(t_v3 orient);
+int			rad2deg_int(double rad);
+t_mtrx		get_rotmtrx(t_v3 orient);
 
 /********** UI. **********/
 
-int		close_btn_handler(t_mrt *mrt);
-int		kbd_input_handler(int key, t_mrt *mrt);
-void	show_sidebar(t_mrt mrt);
-void	redraw_win(t_mrt mrt);
+int			close_btn_handler(t_mrt *mrt);
+int			kbd_input_handler(int key, t_mrt *mrt);
+void		show_sidebar(t_mrt mrt);
+void		redraw_win(t_mrt mrt);
 
 /********** Trace the rays. **********/
 
-void	raytrace(t_mrt mrt);
-double	intersect_ray_obj(t_v3 cam_pos, t_v3 ray_dir, t_objlst *obj);
-double	intersect_ray_sphere(t_v3 cam_pos, t_v3 d, t_sphere *sphere);
-t_colr	get_object_colr(t_scene scene, t_objlst *close_obj, t_v3 hitpoint);
-t_colr	colr_mult(t_colr c, double i);
-t_colr	colr_add_colr(t_colr c1, t_colr c2);
-void	colr_print(t_colr c, char *name);
-t_colr	colr_add_light(t_colr c, t_colr l);
-t_colr	calculate_lights(t_scene scene, t_v3 p, t_v3 n, t_colr obj_colr);
-t_colr	get_sphere_colr(t_scene scene, t_sphere s, t_v3 hitpoint);
+void		raytrace(t_mrt mrt);
+double		intersect_ray_obj(t_v3 origin, t_v3 ray_dir, t_ray_minmax rp,
+				t_objlst *obj);
+t_intersec	intersect_ray_objs(t_v3 origin, t_v3 ray_dir, t_ray_minmax rp,
+				t_objlst *objs);
+double		intersect_ray_sphere(t_v3 cam_pos, t_v3 ray_dir, t_ray_minmax rp,
+				t_sphere *sphere);
+t_colr		get_object_colr(t_scene scene, t_objlst *close_obj, t_v3 hitpoint);
+t_colr		colr_mult(t_colr c, double i);
+t_colr		colr_add_colr(t_colr c1, t_colr c2);
+void		colr_print(t_colr c, char *name);
+t_colr		colr_add_light(t_colr c, t_colr l);
+t_colr		calculate_lights(t_scene scene, t_v3 p, t_v3 n, t_colr obj_colr);
+t_colr		get_sphere_colr(t_scene scene, t_sphere s, t_v3 hitpoint);
 
 /********** Do stuff. **********/
 
-void	draw_axis(t_mrt mrt);
-void	do_stuff(t_mrt mrt);
+void		draw_axis(t_mrt mrt);
+void		do_stuff(t_mrt mrt);
 
 #endif

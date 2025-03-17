@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/14 17:18:21 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/17 20:03:23 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS		=	main.c \
 					put_pixel_string.c \
 					sidebar.c \
 					sidebar_print_text.c \
+					ui-utils.c \
 					objlst.c \
 					objlst_print.c \
 					print_scene.c \
@@ -53,6 +54,7 @@ SRCS		=	main.c \
 					intersect_ray_obj.c \
 					sphere_intersect.c \
 					sphere_colr.c \
+					calculate_lights.c \
 					colr_utils.c \
 					do_stuff.c \
 					tokenizer.c \
