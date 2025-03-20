@@ -1,5 +1,15 @@
 # This is going to be... 42's MiniRT 🥳
 
+## Most recent TODOs
+
+- UI feat: move the camera using `wasd` and `+/-`. `wasd` should rotate the
+  camera up/left/down/right and zoom in and out but the focus point remains
+  fixed. Of course, even nicer would be some mouse control but, meh.
+- UI feat: show a list of available objects in the scene, select one and make
+  the objects parameters modifiable.
+- rewrite idea: how about a completely different approach? using the xpm
+  functions from mlx and then generating images and putting them to screen?!?!
+
 ## Ressources
 
 - [Computerphile video about](https://www.youtube.com/watch?v=ezXGTRSx1g8)
