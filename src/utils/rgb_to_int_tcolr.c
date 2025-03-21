@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:00:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/05 09:00:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 10:13:30 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ int	rgb_to_int(char *rgbstr)
 	green = hexchar_to_int(rgbstr[2]) * 16 + hexchar_to_int(rgbstr[3]);
 	blue = hexchar_to_int(rgbstr[4]) * 16 + hexchar_to_int(rgbstr[5]);
 	return (red << 16 | green << 8 | blue);
+}
+
+/* Convert a rgbstring to tcolr. */
+t_colr	rgb_to_tcolr(char *rgbstr)
+{
+	t_colr	ret;
+
+	if (!ft_strlen(rgbstr) || ft_strlen(rgbstr) % 2)
+		return ((t_colr){0, 0, 0});
+	ret.r = hexchar_to_int(rgbstr[0]) * 16 + hexchar_to_int(rgbstr[1]);
+	ret.g = hexchar_to_int(rgbstr[2]) * 16 + hexchar_to_int(rgbstr[3]);
+	ret.b = hexchar_to_int(rgbstr[4]) * 16 + hexchar_to_int(rgbstr[5]);
+	return (ret);
 }
 
 /* Inverse conversion from a given rgb-integer value to byte values stored in an
