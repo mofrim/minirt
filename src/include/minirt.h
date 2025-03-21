@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/17 22:56:26 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 10:13:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@
 
 # include "parser.h"
 
+/********** Colors. **********/
+
+#include "colors.h"
+
 /********** Structs. **********/
+
 
 /* In principle a 2d vector... */
 typedef struct s_v2
@@ -101,6 +106,7 @@ t_mrt		*init_mrt(t_scene *scene);
 /********** Utils. **********/
 
 int			rgb_to_int(char *rgbstr);
+t_colr		rgb_to_tcolr(char *rgbstr);
 void		int_to_rgb(int rgb_arr[3], int rgb_num);
 void		put_pixel_win(t_mrt	mrt, t_pxl pos, char *colr);
 void		put_pixel_canvas(t_mrt	mrt, t_pxl pos, char *colr);
