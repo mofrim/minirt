@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 21:24:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 22:13:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,13 @@ typedef enum e_dirs
 t_scene		*parse_scene(char *scene_file);
 t_mrt		*init_mrt(t_scene *scene);
 
+void		setup_camera(t_camera *cam);
+void		setup_scene(t_scene *scene);
+
+/********** Debug functions. **********/
+void		debug_parsed_scene(t_scene *scene);
+void		debug_token(t_token *token, const char *message);
+
 /********** Utils. **********/
 
 int			rgb_to_int(char *rgbstr);
@@ -131,6 +138,8 @@ t_colr		int_to_tcolr(int int_colr);
 void		error_exit(char *msg);
 void		nullcheck(void *p, char *msg);
 void		cleanup_mrt(t_mrt *mrt);
+char		*read_file(char *filename);
+int         ft_atof(const char *str); // Still need to implement this
 
 /********** Math utils. **********/
 

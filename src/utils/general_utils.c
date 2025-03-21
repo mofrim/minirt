@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gerneral_utils.c                                   :+:      :+:    :+:   */
+/*   general_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 22:52:36 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/17 22:55:33 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:24:48 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,39 @@ void	nullcheck(void *p, char *msg)
 {
 	if (!p)
 		error_exit(msg);
+}
+
+char *read_file(char *filename)
+{
+	int fd;
+	char *line;
+	char *temp;
+	char *file_content;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening scene file");
+		return (NULL);
+	}
+	file_content = ft_strdup("");
+	if (!file_content)
+	{
+		close(fd);
+		return (NULL);
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		temp = file_content;
+		file_content = ft_strjoin(file_content, line);
+		free(temp);
+		free(line);
+		if (!file_content)
+		{
+			close(fd);
+			return (NULL);
+		}
+	}
+	close(fd);
+	return (file_content);
 }

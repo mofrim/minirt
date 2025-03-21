@@ -1,4 +1,4 @@
-#**************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/22 20:07:28 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/22 22:53:34 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_DIR		=	./src
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
 # any ob called `ob/bla.o`
 VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace \
-				./src/parsing ./src/xpm
+				./src/parsing ./src/xpm ./src/setup_scene
 
 # list all source files here
 SRCS		=	main.c \
@@ -57,9 +57,17 @@ SRCS		=	main.c \
 					calculate_lights.c \
 					colr_utils.c \
 					do_stuff.c \
-					tokenizer.c \
-					parser.c \
 					general_utils.c \
+					parser.c \
+					parser_objs.c \
+					parser_objs2.c \
+					parser_parse.c \
+					parser_utils.c \
+					parser_utils2.c \
+					tokenizer.c \
+					tokenizer_next.c \
+					tokenizer_nums.c \
+					setup_scene.c \
 					raytrace_xpm.c \
 					xpm.c \
 					cleanup_mrt.c \
