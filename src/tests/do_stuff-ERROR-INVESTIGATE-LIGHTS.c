@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/20 22:15:31 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/20 22:01:46 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_lights(t_mrt mrt)
 	objs = &mrt.scene->objects;
 
 	t_light	*light1 = malloc(sizeof(t_light));
-	light1->bright = 0.5;
+	light1->bright = 1.0;
 	// light1->colr = (t_colr){255, 0, 0};
 	light1->colr = (t_colr){255, 255, 255};
 	light1->pos = (t_v3){0, 2.9, 10};
@@ -77,14 +77,8 @@ void	init_lights(t_mrt mrt)
 	t_light	*light3 = malloc(sizeof(t_light));
 	light3->bright = 0.9;
 	light3->colr = (t_colr){200, 12, 23};
-	light3->pos = (t_v3){0, 0, 7};
+	light3->pos = (t_v3){0, 0, 8};
 	objlst_add_back(objs, objlst_new(LIGHT, light3));
-
-	t_light	*light4 = malloc(sizeof(t_light));
-	light4->bright = 0.6;
-	light4->colr = (t_colr){123, 231, 76};
-	light4->pos = (t_v3){0, 5, 7};
-	objlst_add_back(objs, objlst_new(LIGHT, light4));
 }
 
 void	init_scene(t_mrt mrt)
@@ -102,10 +96,10 @@ void	do_stuff(t_mrt mrt)
 	show_sidebar(mrt);
 	print_scene(*mrt.scene);
 
-	// raytrace(mrt);
+	raytrace(mrt);
 
-	t_xpm_canvas	*xc;
-	xc = raytrace_xpm(mrt);
-	mlx_put_image_to_window(mrt.mlx, mrt.win, xc->img, SIDEBAR_AREA_X, 0);
+	// xc = raytrace_xpm(mrt);
+	// t_xpm_canvas	*xc;
+	// mlx_put_image_to_window(mrt.mlx, mrt.win, xc->img, SIDEBAR_AREA_X, 0);
 }
 

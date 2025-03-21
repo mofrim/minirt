@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/21 10:14:25 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/21 10:20:33 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRC_DIR		=	./src
 # https://makefiletutorial.com/#the-vpath-directive
 #
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
-# any obj called `obj/bla.o`
+# any ob called `ob/bla.o`
 VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace \
-				./src/parsing
+				./src/parsing ./src/xpm
 
 # list all source files here
 SRCS		=	main.c \
@@ -59,7 +59,9 @@ SRCS		=	main.c \
 					do_stuff.c \
 					tokenizer.c \
 					parser.c \
-					general_utils.c
+					general_utils.c \
+					raytrace_xpm.c \
+					xpm.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
