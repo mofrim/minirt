@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 10:10:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 18:47:29 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,94 @@ static void	print_cam(t_camera cam)
 		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
 }
 
+
+static void print_debug(t_scene scene)
+{
+    printf("\n=== Scene Debug Info ===\n");
+    
+    // Print camera info
+    if (scene.cam)
+    {
+        printf("Camera:\n");
+        printf("  Position: (%f, %f, %f)\n", scene.cam->pos.x, scene.cam->pos.y, scene.cam->pos.z);
+        printf("  Direction: (%f, %f, %f)\n", scene.cam->orient.x, scene.cam->orient.y, scene.cam->orient.z);
+        printf("  FOV: %f radians\n", scene.cam->fov);
+        printf("  View width: %f\n", scene.cam->view_width);
+    }
+    else
+    {
+        printf("No camera defined!\n");
+    }
+    
+    // Print ambient light info
+    if (scene.alight)
+    {
+        printf("Ambient Light:\n");
+        printf("  Brightness: %f\n", scene.alight->bright);
+        printf("  Color: (%d, %d, %d)\n", scene.alight->colr.r, scene.alight->colr.g, scene.alight->colr.b);
+    }
+    else
+    {
+        printf("No ambient light defined!\n");
+    }
+    
+    // Print objects
+    printf("Objects:\n");
+    int count = 0;
+    t_objlst *current = scene.objects;
+    while (current)
+    {
+        count++;
+        switch (current->type)
+        {
+            case LIGHT:
+            {
+                t_light *light = (t_light *)current->obj;
+                printf("  Light %d:\n", count);
+                printf("    Position: (%f, %f, %f)\n", light->pos.x, light->pos.y, light->pos.z);
+                printf("    Brightness: %f\n", light->bright);
+                printf("    Color: (%d, %d, %d)\n", light->colr.r, light->colr.g, light->colr.b);
+                break;
+            }
+            case SPHERE:
+            {
+                t_sphere *sphere = (t_sphere *)current->obj;
+                printf("  Sphere %d:\n", count);
+                printf("    Center: (%f, %f, %f)\n", sphere->center.x, sphere->center.y, sphere->center.z);
+                printf("    Radius: %f\n", sphere->r);
+                printf("    Color: (%d, %d, %d)\n", sphere->colr.r, sphere->colr.g, sphere->colr.b);
+                break;
+            }
+            case PLANE:
+            {
+                t_plane *plane = (t_plane *)current->obj;
+                printf("  Plane %d:\n", count);
+                printf("    Point: (%f, %f, %f)\n", plane->pop.x, plane->pop.y, plane->pop.z);
+                printf("    Normal: (%f, %f, %f)\n", plane->normal.x, plane->normal.y, plane->normal.z);
+                printf("    Color: (%d, %d, %d)\n", plane->colr.r, plane->colr.g, plane->colr.b);
+                break;
+            }
+            case CYLINDER:
+            {
+                t_cylinder *cylinder = (t_cylinder *)current->obj;
+                printf("  Cylinder %d:\n", count);
+                printf("    Center: (%f, %f, %f)\n", cylinder->center.x, cylinder->center.y, cylinder->center.z);
+                printf("    Axis: (%f, %f, %f)\n", cylinder->axis.x, cylinder->axis.y, cylinder->axis.z);
+                printf("    Radius: %f\n", cylinder->radius);
+                printf("    Height: %f\n", cylinder->height);
+                printf("    Color: (%d, %d, %d)\n", cylinder->colr.r, cylinder->colr.g, cylinder->colr.b);
+                break;
+            }
+            default:
+                printf("  Unknown object type %d\n", current->type);
+        }
+        current = current->next;
+    }
+    printf("Total objects: %d\n", count);
+    printf("=== End Scene Debug Info ===\n\n");
+}
+
+
 /**
  * Print the contents of the scene struct
  *
@@ -26,8 +114,52 @@ static void	print_cam(t_camera cam)
  */
 void	print_scene(t_scene scene)
 {
+	print_debug(scene);
 	printf("-- cam --\n");
 	print_cam(*scene.cam);
 	printf("-- objects --\n");
 	objlst_print(scene.objects);
+}
+
+
+
+void debug_parsed_scene(t_scene *scene)
+{
+    printf("\n=== Parsed Scene Debug ===\n");
+    if (!scene)
+    {
+        printf("Scene is NULL!\n");
+        return;
+    }
+    
+    // Check if camera exists
+    if (scene->cam)
+    {
+        printf("Camera found\n");
+    }
+    else
+    {
+        printf("No camera found\n");
+    }
+    
+    // Check if ambient light exists
+    if (scene->alight)
+    {
+        printf("Ambient light found\n");
+    }
+    else
+    {
+        printf("No ambient light found\n");
+    }
+    
+    // Count objects
+    int count = 0;
+    t_objlst *current = scene->objects;
+    while (current)
+    {
+        count++;
+        current = current->next;
+    }
+    printf("Number of objects: %d\n", count);
+    printf("=== End Parsed Scene Debug ===\n\n");
 }

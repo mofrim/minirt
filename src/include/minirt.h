@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 10:13:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 18:47:45 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ typedef struct s_mrt
 
 t_scene		*parse_scene(char *scene_file);
 t_mrt		*init_mrt(t_scene *scene);
+
+void		setup_camera(t_camera *cam);
+void		setup_scene(t_scene *scene);
+void		debug_parsed_scene(t_scene *scene);
 
 /********** Utils. **********/
 

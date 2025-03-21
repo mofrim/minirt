@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:22:49 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/14 17:20:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 18:34:42 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ t_v3	parse_v3(t_parser *parser);
 // needs to be organized, just to test for now:
 
 
-
+void		setup_camera(t_camera *cam);
+void		setup_scene(t_scene *scene);
 
 
 
@@ -119,5 +120,6 @@ t_sphere	*parse_sphere(t_parser *parser);
 t_plane		*parse_plane(t_parser *parser);
 t_cylinder	*parse_cylinder(t_parser *parser);
 t_colr		parse_color(t_parser *parser);
+
 
 #endif // PARSER_H

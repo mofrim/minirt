@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/14 17:00:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 18:32:12 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,35 @@ t_light *parse_light(t_parser *parser)
 }
 
 // Parse a sphere
+// t_sphere *parse_sphere(t_parser *parser)
+// {
+//     t_sphere *sphere = malloc(sizeof(t_sphere));
+
+//     if (!sphere)
+//         return (NULL); // Handle allocation error
+//     sphere->center = parse_v3(parser);
+//     sphere->r_squared = parse_number(parser->tokenizer);
+//     sphere->colr = parse_color(parser);
+//     return sphere;
+// }
+
+// test
 t_sphere *parse_sphere(t_parser *parser)
 {
-    t_sphere *sphere = malloc(sizeof(t_sphere));
-
+    double diameter;
+    t_sphere *sphere;
+    
+    sphere = malloc(sizeof(t_sphere));
     if (!sphere)
         return (NULL); // Handle allocation error
     sphere->center = parse_v3(parser);
-    sphere->r_squared = parse_number(parser->tokenizer);
+
+    diameter = parse_number(parser->tokenizer); // read diam from the file
+
+    //convert to radius and store val
+    sphere->r = diameter / 2.0;
+    sphere->r_squared = sphere->r * sphere->r;
+
     sphere->colr = parse_color(parser);
     return sphere;
 }

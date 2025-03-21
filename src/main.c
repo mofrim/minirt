@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
+/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/14 17:01:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/21 18:49:13 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+
+char *read_file(char *filename)
+{
+	int fd;
+	char *line;
+	char *temp;
+	char *file_content;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening scene file");
+		return (NULL);
+	}
+	file_content = ft_strdup("");
+	if (!file_content)
+	{
+		close(fd);
+		return (NULL);
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		temp = file_content;
+		file_content = ft_strjoin(file_content, line);
+		free(temp);
+		free(line);
+		if (!file_content)
+		{
+			close(fd);
+			return (NULL);
+		}
+	}
+	close(fd);
+	return (file_content);
+}
 
 int	main(int ac, char **av)
 {
@@ -18,12 +54,25 @@ int	main(int ac, char **av)
 	t_scene	*scene;
 	t_tokenizer *tokenizer;
 	t_parser *parser;
+	char *file_content;
+	int fd;
 
 	if (ac != 2)
 		return (printf("Usage: ./minirt SCENE_FILE\n"), 1);
 
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error openingt scene file");
+		return (1);
+	}
+
+	file_content = read_file(av[1]);
+	if (!file_content)
+		return (1);
+
 	// Create a tokenizer with the scene file content
-	tokenizer = tokenizer_new(av[1]); // Pass the scene file path to tokenizer_new
+	tokenizer = tokenizer_new(file_content); // Pass the scene file path to tokenizer_new
 	if (!tokenizer)
 		return (printf("Error creating tokenizer\n"), 1);
 
@@ -37,6 +86,10 @@ int	main(int ac, char **av)
 	if (!scene)
 		return (printf("Error during scene file parsing\n"), 1);
 
+	// Debug the parsed scene
+	debug_parsed_scene(scene);
+	setup_scene(scene);
+
 	mrt = init_mrt(scene);
 	mlx_key_hook(mrt->win, kbd_input_handler, mrt);
 	mlx_hook(mrt->win, DestroyNotify, 0, close_btn_handler, mrt);
@@ -46,6 +99,11 @@ int	main(int ac, char **av)
 	parser_free(parser);
 	return (0);
 }
+
+
+// Helper function to read file content
+
+
 
 // int	main(void)
 // {

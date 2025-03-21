@@ -1,12 +1,12 @@
-#**************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
+#    By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/21 10:20:33 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/21 18:41:44 by jroseiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_DIR		=	./src
 # TLDR; this will make make find the correct source file `./src/exec/bla.c` for
 # any ob called `ob/bla.o`
 VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace \
-				./src/parsing ./src/xpm
+				./src/parsing ./src/xpm ./src/setup_scene
 
 # list all source files here
 SRCS		=	main.c \
@@ -57,9 +57,10 @@ SRCS		=	main.c \
 					calculate_lights.c \
 					colr_utils.c \
 					do_stuff.c \
+					general_utils.c \
 					tokenizer.c \
 					parser.c \
-					general_utils.c \
+					setup_scene.c \
 					raytrace_xpm.c \
 					xpm.c
 

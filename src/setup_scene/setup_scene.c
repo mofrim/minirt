@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_scene.c                                      :+:      :+:    :+:   */
+/*   setup_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 08:19:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/18 18:30:58 by jroseiro         ###   ########.fr       */
+/*   Created: 2025/03/21 18:35:13 by jroseiro          #+#    #+#             */
+/*   Updated: 2025/03/21 18:38:16 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minirt.h"
+#include "minirt.h"
 
-// t_scene	*parse_scene(char *scene_file)
-// {
-// 	/* For now go without scene file... */
-// 	// int		sc_fd;
-// 	// sc_fd = open(scene_file, O_RDONLY);
-// 	// if (sc_fd == -1)
-// 	// 	return (NULL);
-// 	(void)scene_file;
+void	setup_scene(t_scene *scene)
+{
+	if (!scene)
+		return ;
+	
+	setup_camera(scene->cam);
 
-// 	t_scene	*scene;
-// 	scene = malloc(sizeof(t_scene));
-// 	return (scene);
-// }
+	scene->subsample = 1;
+
+	if (!scene->alight)
+	{
+		scene->alight = malloc(sizeof(t_amb_light));
+		if (scene->alight)
+		{
+			scene->alight->bright = 0.2; // default val
+			scene->alight->colr = (t_colr){255, 255, 255}; // default white
+		}
+	}
+}
