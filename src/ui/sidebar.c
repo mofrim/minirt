@@ -6,27 +6,35 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:01:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/09 11:49:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:47:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	draw_sidebar_seperator(t_mrt);
+static void	draw_sidebar_seperator(t_mrt mrt);
 static void	show_keys(t_mrt mrt, int *i);
 static void	show_mapinfo(t_mrt mrt, int *i);
-void	print_mapinfo(t_mrt mrt, const char *txt, int prop, int *i);
-void	print_menu_text(t_mrt mrt, int x, int y, char *txt);
-void	print_mapinfo_float(t_mrt mrt, const char *txt, double prop, int *i);
+void		print_mapinfo(t_mrt mrt, const char *txt, int prop, int *i);
+void		print_menu_text(t_mrt mrt, int x, int y, char *txt);
+void		print_mapinfo_float(t_mrt mrt, const char *txt, double prop,
+				int *i);
 
-void show_sidebar(t_mrt mrt)
+void	show_sidebar(t_mrt mrt)
 {
-	int i;
+	int	i;
 
 	draw_sidebar_seperator(mrt);
-	mlx_set_font(mrt.mlx, mrt.win, FONT_DEFAULT);
+
+	/* Sadly this just causes a lot memory garbage.. i think we should keep it
+	 * umcommented for dev because it spoils the valgrind output. in the final
+	 * version we can uncomment and explain that it is due to mlx issues.
+	 *
+	 * 		mlx_set_font(mrt.mlx, mrt.win, FONT_DEFAULT);
+	 */
+
 	mlx_string_put(mrt.mlx, mrt.win, 15, 20, rgb_to_int("00ff00"),
-			"MiniRT");
+		"MiniRT");
 	i = 2;
 	show_keys(mrt, &i);
 	i += 2;
@@ -34,7 +42,7 @@ void show_sidebar(t_mrt mrt)
 	i += 2;
 	print_menu_text(mrt, 15, 20 + (++i) * 15, "-- Current Map Params --");
 	i++;
-	print_mapinfo(mrt, "subsample: ",mrt.scene->subsample, &i);
+	print_mapinfo(mrt, "subsample: ", mrt.scene->subsample, &i);
 	print_mapinfo(mrt, "fov: ", rad2deg_int(mrt.scene->cam->fov), &i);
 }
 

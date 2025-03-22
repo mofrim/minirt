@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 12:47:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:38:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	do_stuff(t_mrt mrt)
 	show_sidebar(mrt);
 	print_scene(*mrt.scene);
 
-	raytrace(mrt);
+	// raytrace(mrt);
 
-	// raytrace_xpm(mrt);
-	// mlx_put_image_to_window(mrt.mlx, mrt.win, mrt.xc->img, SIDEBAR_AREA_X, 0);
+	raytrace_xpm(mrt);
+	mlx_put_image_to_window(mrt.mlx, mrt.win, mrt.xc->img, SIDEBAR_AREA_X, 0);
 }
 

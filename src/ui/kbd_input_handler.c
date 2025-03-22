@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:49:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/16 20:23:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:48:11 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ void	handle_quit_destroy_keys(int key, t_mrt *mrt)
 {
 	if (key == 65307)
 	{
-		mlx_destroy_window(mrt->mlx, mrt->win);
-		mlx_destroy_display(mrt->mlx);
-		free(mrt->mlx);
-		free(mrt);
+		cleanup_mrt(mrt);
 		exit(0);
 	}
 }
-

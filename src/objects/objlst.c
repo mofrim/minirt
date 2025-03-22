@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:53:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/11 10:26:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:47:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	objlst_add_back(t_objlst **head, t_objlst *newend)
 void	objlst_clear(t_objlst *lst)
 {
 	t_objlst	*tmp;
-	
-	while(lst)
+
+	while (lst)
 	{
 		tmp = lst->next;
 		free(lst->obj);
