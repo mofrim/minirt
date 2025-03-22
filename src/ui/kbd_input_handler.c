@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:49:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 16:48:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 17:53:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	redraw_win(t_mrt mrt)
 {
 	mlx_clear_window(mrt.mlx, mrt.win);
 	show_sidebar(mrt);
-	raytrace(mrt);
+	raytrace_xpm(mrt);
 	// draw_axis(mrt);
 }
 
