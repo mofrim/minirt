@@ -11,3 +11,4 @@ obj/
 core
 playground/chat
 playground/immitate_oop
+.DS_Store
