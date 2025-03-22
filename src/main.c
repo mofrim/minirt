@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 18:49:13 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 14:13:56 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	main(int ac, char **av)
 	// Debug the parsed scene
 	debug_parsed_scene(scene);
 	setup_scene(scene);
+
+
 
 	mrt = init_mrt(scene);
 	mlx_key_hook(mrt->win, kbd_input_handler, mrt);
