@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 16:25:16 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 18:43:32 by zrz              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ t_mrt		*init_mrt(t_scene *scene);
 
 void		setup_camera(t_camera *cam);
 void		setup_scene(t_scene *scene);
+
+/********** Debug functions. **********/
 void		debug_parsed_scene(t_scene *scene);
 void		debug_token(t_token *token, const char *message);
 
@@ -123,6 +125,8 @@ t_colr		int_to_tcolr(int int_colr);
 void		error_exit(char *msg);
 void		nullcheck(void *p, char *msg);
 char		*read_file(char *filename);
+
+int         ft_atof(const char *str); // Still need to implement this
 
 /********** Math utils. **********/
 

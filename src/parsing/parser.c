@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 16:10:18 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 18:44:17 by zrz              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	handle_token_keyword(t_parser *parser, t_scene *scene, t_token *token)
 {
 	t_objlst	*objlst;
 
-	if (strcmp(token->u_value.str, "A") == 0)
+	if (ft_strcmp(token->u_value.str, "A") == 0)
 		scene->alight = parse_ambient_light(parser);
-	else if (strcmp(token->u_value.str, "C") == 0)
+	else if (ft_strcmp(token->u_value.str, "C") == 0)
 		scene->cam = parse_camera(parser);
-	else if (strcmp(token->u_value.str, "L") == 0)
+	else if (ft_strcmp(token->u_value.str, "L") == 0)
 	{
 		objlst = objlst_new(LIGHT, parse_light(parser));
 		objlst_add_back(&scene->objects, objlst);
 	}
-	else if (strcmp(token->u_value.str, "sp") == 0)
+	else if (ft_strcmp(token->u_value.str, "sp") == 0)
 	{
 		objlst = objlst_new(SPHERE, parse_sphere(parser));
 		objlst_add_back(&scene->objects, objlst);
@@ -67,12 +67,12 @@ void	handle_token_keyword(t_parser *parser, t_scene *scene, t_token *token)
 void	handle_more_keywords(t_parser *parser, t_scene *scene, t_token *token)
 {
 	t_objlst	*objlst;
-	if (strcmp(token->u_value.str, "pl") == 0)
+	if (ft_strcmp(token->u_value.str, "pl") == 0)
 	{
 		objlst = objlst_new(PLANE, parse_plane(parser));
 		objlst_add_back(&scene->objects, objlst);
 	}
-	else if (strcmp(token->u_value.str, "cy") == 0)
+	else if (ft_strcmp(token->u_value.str, "cy") == 0)
 	{
 		objlst = objlst_new(CYLINDER, parse_cylinder(parser));
 		objlst_add_back(&scene->objects, objlst);
