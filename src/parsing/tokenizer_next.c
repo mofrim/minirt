@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 16:15:46 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:15:06 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	is_coordinate(t_tokenizer *tokenizer)
 {
-	return ((ft_isdigit(tokenizer->input[tokenizer->position]) || 
-		 tokenizer->input[tokenizer->position] == '-' || 
-		 tokenizer->input[tokenizer->position] == '+') &&
+	return ((ft_isdigit(tokenizer->input[tokenizer->position]) || \
+			tokenizer->input[tokenizer->position] == '-' || \
+			tokenizer->input[tokenizer->position] == '+') && \
 		ft_strchr(&tokenizer->input[tokenizer->position], ','));
 }
 
@@ -27,19 +27,17 @@ int	is_identifier(t_tokenizer *tokenizer)
 
 int	is_numeric(t_tokenizer *tokenizer)
 {
-	return (ft_isdigit(tokenizer->input[tokenizer->position]) || 
-			 tokenizer->input[tokenizer->position] == '-' || 
-			 tokenizer->input[tokenizer->position] == '+' || 
-			 tokenizer->input[tokenizer->position] == '.');
+	return (ft_isdigit(tokenizer->input[tokenizer->position]) || \
+				tokenizer->input[tokenizer->position] == '-' || \
+				tokenizer->input[tokenizer->position] == '+' || \
+			tokenizer->input[tokenizer->position] == '.');
 }
 
 t_token	*tokenizer_next(t_tokenizer *tokenizer)
 {
 	skip_whitespace(tokenizer);
-
 	if (tokenizer->input[tokenizer->position] == '\0')
 		return (NULL);
-
 	if (is_coordinate(tokenizer))
 		return (parse_coordinate(tokenizer));
 	else if (is_identifier(tokenizer))

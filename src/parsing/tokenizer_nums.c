@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 16:18:19 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:15:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	skip_sign(t_tokenizer *tokenizer)
 {
-	if (tokenizer->input[tokenizer->position] == '-' || 
+	if (tokenizer->input[tokenizer->position] == '-' || \
 		tokenizer->input[tokenizer->position] == '+')
 		tokenizer->position++;
 }

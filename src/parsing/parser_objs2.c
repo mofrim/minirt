@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 16:30:00 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:08:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,14 @@ t_colr	parse_color(t_parser *parser)
 	t_colr	color;
 	t_token	*token;
 	char	**parts;
-	
+
 	color.r = 255;
 	color.g = 255;
 	color.b = 255;
-	
 	token = tokenizer_next(parser->tokenizer);
 	debug_token(token, "in parse_color");
-	
 	if (!token)
 		return (color);
-	
 	if (token->type == TOKEN_TYPE_KEYWORD)
 	{
 		parts = ft_split(token->u_value.str, ',');
@@ -67,7 +64,6 @@ t_colr	parse_color(t_parser *parser)
 			free_parts(parts);
 		}
 	}
-	
 	token_free(token);
 	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 18:44:17 by zrz              ###   ########.fr       */
+/*   Updated: 2025/03/22 23:04:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_scene	*init_scene(void)
 	scene->objects = NULL;
 	scene->alight = NULL;
 	scene->cam = NULL;
-	scene->subsample = 1;
+	scene->subsample = 10;
 	return (scene);
 }
 
@@ -67,6 +67,7 @@ void	handle_token_keyword(t_parser *parser, t_scene *scene, t_token *token)
 void	handle_more_keywords(t_parser *parser, t_scene *scene, t_token *token)
 {
 	t_objlst	*objlst;
+
 	if (ft_strcmp(token->u_value.str, "pl") == 0)
 	{
 		objlst = objlst_new(PLANE, parse_plane(parser));

@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 16:13:32 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:11:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	free_parts_helper(char **parts)
 	free(parts);
 }
 
+// QUESTION: maybe just use an assignment like `v = (t_v3){0, 0, 0};`. IMHO
+// there is no need for an extra function here.
 t_v3	parse_default_v3(void)
 {
 	t_v3	v3;
@@ -73,7 +75,6 @@ t_v3	parse_v3(t_parser *parser)
 	token_free(token);
 	return (v3);
 }
-
 
 void	free_parts(char **parts)
 {

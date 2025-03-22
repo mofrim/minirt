@@ -6,14 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 22:16:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 23:00:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-
-
 
 int	main(int ac, char **av)
 {
