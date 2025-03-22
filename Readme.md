@@ -2,13 +2,24 @@
 
 ## Most recent TODOs
 
-- UI feat: move the camera using `wasd` and `+/-`. `wasd` should rotate the
+- [x] UI feat: move the camera using `wasd` and `+/-`. `wasd` should rotate the
   camera up/left/down/right and zoom in and out but the focus point remains
   fixed. Of course, even nicer would be some mouse control but, meh.
-- UI feat: show a list of available objects in the scene, select one and make
+
+- [ ] UI feat: show a list of available objects in the scene, select one and make
   the objects parameters modifiable.
-- rewrite idea: how about a completely different approach? using the xpm
+
+- [x] rewrite idea: how about a completely different approach? using the xpm
   functions from mlx and then generating images and putting them to screen?!?!
+
+- [x] **super good idea:** rewrite xpm-raytrace in a way that the xpm_canvas
+  variable is reused all the time... and a small idea for optimization: maybe it
+  is just possible to compute the new image then compare to the old one and put
+  only pixels to screen that differ.
+
+- [ ] **handle insides objects correctly !!!** (also placing lights inside objects and
+  so on...)
+
 
 ## Ressources
 
