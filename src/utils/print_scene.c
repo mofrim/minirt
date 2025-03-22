@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 12:32:07 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:24:20 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
 // }
 
-
+// JUST FOR DEBUG PURPOSES
 static void print_debug(t_scene scene)
 {
     printf("\n=== Scene Debug Info ===\n");

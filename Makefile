@@ -6,7 +6,7 @@
 #    By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/21 18:41:44 by jroseiro         ###   ########.fr        #
+#    Updated: 2025/03/22 16:27:05 by jroseiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,14 @@ SRCS		=	main.c \
 					colr_utils.c \
 					do_stuff.c \
 					general_utils.c \
-					tokenizer.c \
 					parser.c \
+					parser_objs.c \
+					parser_objs2.c \
+					parser_parse.c \
+					parser_utils.c \
+					tokenizer.c \
+					tokenizer_next.c \
+					tokenizer_nums.c \
 					setup_scene.c \
 					raytrace_xpm.c \
 					xpm.c

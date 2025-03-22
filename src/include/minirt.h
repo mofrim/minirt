@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 12:07:52 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:25:16 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int			tcolr_to_int(t_colr colr);
 t_colr		int_to_tcolr(int int_colr);
 void		error_exit(char *msg);
 void		nullcheck(void *p, char *msg);
+char		*read_file(char *filename);
 
 /********** Math utils. **********/
 
