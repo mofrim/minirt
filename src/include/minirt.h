@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 10:13:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 11:24:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,13 @@
 
 /********** Colors. **********/
 
-#include "colors.h"
+# include "colors.h"
+
+/********** XPM. **********/
+
+# include "xpm.h"
 
 /********** Structs. **********/
-
 
 /* In principle a 2d vector... */
 typedef struct s_v2
@@ -93,9 +96,10 @@ typedef struct s_pxl
  * needed throughout the program. */
 typedef struct s_mrt
 {
-	t_xvar		*mlx;
-	t_win_list	*win;
-	t_scene		*scene;
+	t_xvar			*mlx;
+	t_win_list		*win;
+	t_scene			*scene;
+	t_xpm_canvas	*xc;
 }	t_mrt;
 
 /********** General functions. **********/
@@ -117,6 +121,7 @@ int			tcolr_to_int(t_colr colr);
 t_colr		int_to_tcolr(int int_colr);
 void		error_exit(char *msg);
 void		nullcheck(void *p, char *msg);
+void		cleanup_mrt(t_mrt *mrt);
 
 /********** Math utils. **********/
 

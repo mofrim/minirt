@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:29:07 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 10:28:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 11:29:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ t_mrt	*init_mrt(t_scene *scene)
 	t_mrt	*mrt;
 
 	mrt = malloc(sizeof(t_mrt));
+	nullcheck(mrt, "mrt in init_mrt()");
 	init_mlx_win(mrt);
 	mrt->scene = scene;
+	mrt->xc = init_xpm_canvas(mrt->mlx);
+	nullcheck(mrt->xc, "xc in init_mrt()");
 	return (mrt);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/20 21:49:22 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 11:36:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@
 t_v3	canvas2viewport(int cx, int cy, t_camera cam);
 t_colr	traceray(t_scene scene, t_v3 ray_dir);
 
-t_xpm_canvas *raytrace_xpm(t_mrt mrt)
+void	raytrace_xpm(t_mrt mrt)
 {
 	int				cx;
 	int				cy;
 	t_v3			ray_dir;
 	t_colr			px_colr;
-	t_xpm_canvas	*xc;
 
-	xc = init_xpm_canvas(mrt);
 	cx = PIXEL_MINX;
 	px_colr = mrt.scene->alight->colr;
 	while (cx < PIXEL_MAXX)
@@ -35,10 +33,9 @@ t_xpm_canvas *raytrace_xpm(t_mrt mrt)
 			ray_dir = canvas2viewport(cx, cy, *mrt.scene->cam);
 			if (!(cy % mrt.scene->subsample))
 				px_colr = traceray(*mrt.scene, ray_dir);
-			put_pixel_xpm(xc, cx, cy, px_colr);
+			put_pixel_xpm(mrt.xc, cx, cy, px_colr);
 			cy++;
 		}
 		cx++;
 	}
-	return (xc);
 }

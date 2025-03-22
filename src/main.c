@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/14 17:01:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 12:15:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	t_mrt	*mrt;
-	t_scene	*scene;
+	t_mrt		*mrt;
+	t_scene		*scene;
 	t_tokenizer *tokenizer;
-	t_parser *parser;
+	t_parser	*parser;
 
 	if (ac != 2)
 		return (printf("Usage: ./minirt SCENE_FILE\n"), 1);
@@ -44,6 +44,7 @@ int	main(int ac, char **av)
 	mlx_loop(mrt->mlx);
 	tokenizer_free(tokenizer);
 	parser_free(parser);
+	cleanup_mrt(mrt);
 	return (0);
 }
 

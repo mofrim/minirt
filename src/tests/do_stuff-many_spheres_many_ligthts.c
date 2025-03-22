@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 12:47:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 11:41:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,17 @@ void	init_objs(t_mrt mrt)
 	*sphere1 = (t_sphere){v3_new(0, 0, 10), 2, 2 * 2, (t_colr){255, 0, 0}};
 	t_sphere	*sphere2 = malloc(sizeof(t_sphere));
 	*sphere2 = (t_sphere){v3_new(4, 0, 14), 2, 2 * 2, (t_colr){0, 255, 0}};
+	t_sphere	*sphere3 = malloc(sizeof(t_sphere));
+	*sphere3 = (t_sphere){v3_new(-4, 0, 14), 1.5, 1.5 * 1.5, (t_colr){0, 0, 142}};
+	t_sphere	*sphere4 = malloc(sizeof(t_sphere));
+	*sphere4 = (t_sphere){v3_new(-2, -1, 8), 1.5, 1.5 * 1.5, (t_colr){0, 99, 142}};
+	t_sphere	*sphere5 = malloc(sizeof(t_sphere));
+	*sphere5 = (t_sphere){v3_new(2, -1, 8), 1, 1 * 1, (t_colr){123, 99, 142}};
 	objlst_add_back(objs, objlst_new(SPHERE, sphere1));
 	objlst_add_back(objs, objlst_new(SPHERE, sphere2));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere3));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere4));
+	objlst_add_back(objs, objlst_new(SPHERE, sphere5));
 }
 
 void	init_lights(t_mrt mrt)
@@ -63,6 +72,18 @@ void	init_lights(t_mrt mrt)
 	light2->colr = (t_colr){0, 0, 255};
 	light2->pos = (t_v3){0, -2.1, 8};
 	objlst_add_back(objs, objlst_new(LIGHT, light2));
+
+	t_light	*light3 = malloc(sizeof(t_light));
+	light3->bright = 0.9;
+	light3->colr = (t_colr){200, 12, 23};
+	light3->pos = (t_v3){0, 0, 7};
+	objlst_add_back(objs, objlst_new(LIGHT, light3));
+
+	t_light	*light4 = malloc(sizeof(t_light));
+	light4->bright = 0.6;
+	light4->colr = (t_colr){123, 231, 76};
+	light4->pos = (t_v3){0, 5, 7};
+	objlst_add_back(objs, objlst_new(LIGHT, light4));
 }
 
 void	init_scene(t_mrt mrt)
@@ -80,9 +101,9 @@ void	do_stuff(t_mrt mrt)
 	show_sidebar(mrt);
 	print_scene(*mrt.scene);
 
-	raytrace(mrt);
+	// raytrace(mrt);
 
-	// raytrace_xpm(mrt);
-	// mlx_put_image_to_window(mrt.mlx, mrt.win, mrt.xc->img, SIDEBAR_AREA_X, 0);
+	raytrace_xpm(mrt);
+	mlx_put_image_to_window(mrt.mlx, mrt.win, mrt.xc->img, SIDEBAR_AREA_X, 0);
 }
 

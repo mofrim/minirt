@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/21 10:20:33 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/22 12:09:17 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCS		=	main.c \
 					parser.c \
 					general_utils.c \
 					raytrace_xpm.c \
-					xpm.c
+					xpm.c \
+					cleanup_mrt.c
 
 OBJDIR	=	obj
 OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
