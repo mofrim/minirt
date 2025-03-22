@@ -6,19 +6,16 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:35:13 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 15:46:27 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:24:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// Add this to the setup_scene function or wherever appropriate
 void	setup_scene(t_scene *scene)
 {
-	// Set up camera
 	if (scene->cam)
 		setup_camera(scene->cam);
-	// Create default ambient light if none exists
 	if (!scene->alight)
 	{
 		scene->alight = malloc(sizeof(t_amb_light));
@@ -32,9 +29,22 @@ void	setup_scene(t_scene *scene)
 					scene->alight->colr.g, scene->alight->colr.b);
 		}
 	}
-	// Check if any objects exist
 	if (!scene->objects)
 	{
 		ft_printf("Warning: No objects in scene!\n");
 	}
+}
+
+t_scene	*init_scene(void)
+{
+	t_scene	*scene;
+
+	scene = malloc(sizeof(t_scene));
+	if (!scene)
+		return (NULL);
+	scene->objects = NULL;
+	scene->alight = NULL;
+	scene->cam = NULL;
+	scene->subsample = 10;
+	return (scene);
 }

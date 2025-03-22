@@ -28,20 +28,6 @@ void	parser_free(t_parser *parser)
 	free(parser);
 }
 
-t_scene	*init_scene(void)
-{
-	t_scene	*scene;
-
-	scene = malloc(sizeof(t_scene));
-	if (!scene)
-		return (NULL);
-	scene->objects = NULL;
-	scene->alight = NULL;
-	scene->cam = NULL;
-	scene->subsample = 10;
-	return (scene);
-}
-
 void	handle_token_keyword(t_parser *parser, t_scene *scene, t_token *token)
 {
 	t_objlst	*objlst;
