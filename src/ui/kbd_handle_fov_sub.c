@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 13:20:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 21:22:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 23:28:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 /* Handle changes in subsampling via `{}` keys. */
 void	handle_subsample(int key, t_mrt mrt)
 {
-	if (key == 91)
+	if (key == 91 && mrt.scene->subsample > 1)
 	{
-		if (mrt.scene->subsample > 1)
-			mrt.scene->subsample -= 1;
+		mrt.scene->subsample -= 1;
 		redraw_win(mrt);
 	}
-	if (key == 93)
+	else if (key == 93 && mrt.scene->subsample < 100)
 	{
-		if (mrt.scene->subsample < 100)
-			mrt.scene->subsample++;
+		mrt.scene->subsample++;
 		redraw_win(mrt);
 	}
 }
