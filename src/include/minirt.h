@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 18:47:45 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:07:52 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ t_mrt		*init_mrt(t_scene *scene);
 void		setup_camera(t_camera *cam);
 void		setup_scene(t_scene *scene);
 void		debug_parsed_scene(t_scene *scene);
+void		debug_token(t_token *token, const char *message);
 
 /********** Utils. **********/
 

@@ -6,18 +6,18 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 18:47:29 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:32:07 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	print_cam(t_camera cam)
-{
-	printf("  pos=(%f,%f,%f), look_at=(%f,%f,%f), fov=%f\n",
-		cam.pos.x, cam.pos.y, cam.pos.z,
-		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
-}
+// static void	print_cam(t_camera cam)
+// {
+// 	printf("  pos=(%f,%f,%f), look_at=(%f,%f,%f), fov=%f\n",
+// 		cam.pos.x, cam.pos.y, cam.pos.z,
+// 		cam.orient.x, cam.orient.y, cam.orient.z, cam.fov);
+// }
 
 
 static void print_debug(t_scene scene)
@@ -115,10 +115,10 @@ static void print_debug(t_scene scene)
 void	print_scene(t_scene scene)
 {
 	print_debug(scene);
-	printf("-- cam --\n");
-	print_cam(*scene.cam);
-	printf("-- objects --\n");
-	objlst_print(scene.objects);
+	// printf("-- cam --\n");
+	// print_cam(*scene.cam);
+	// printf("-- objects --\n");
+	// objlst_print(scene.objects);
 }
 
 
@@ -162,4 +162,23 @@ void debug_parsed_scene(t_scene *scene)
     }
     printf("Number of objects: %d\n", count);
     printf("=== End Parsed Scene Debug ===\n\n");
+}
+
+void debug_token(t_token *token, const char *message)
+{
+    if (!token) {
+        printf("DEBUG TOKEN %s: NULL token\n", message);
+        return;
+    }
+
+    if (token->type == TOKEN_TYPE_KEYWORD)
+        printf("DEBUG TOKEN %s: KEYWORD: '%s'\n", message, token->u_value.str);
+    else if (token->type == TOKEN_TYPE_NUMBER)
+        printf("DEBUG TOKEN %s: NUMBER: %f\n", message, token->u_value.num);
+    else if (token->type == TOKEN_TYPE_IDENTIFIER)
+        printf("DEBUG TOKEN %s: IDENTIFIER: '%s'\n", message, token->u_value.str);
+    else if (token->type == TOKEN_TYPE_SYMBOL)
+        printf("DEBUG TOKEN %s: SYMBOL: '%s'\n", message, token->u_value.str);
+    else
+        printf("DEBUG TOKEN %s: UNKNOWN TYPE\n", message);
 }

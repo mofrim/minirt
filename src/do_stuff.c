@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:29:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/21 18:39:50 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:12:31 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,49 @@
 // 	printf("cam->viewport_width = %lf\n", cam->view_width);
 // }
 
+// void setup_camera(t_camera *cam)
+// {
+// 	if (!cam)
+// 		return ;
+// 	// set up the rotation matrix
+// 	cam->rot = get_rotmtrx(v3_get_norm(cam->orient));
+
+// 	// Calculate view based on fov
+// 	cam->view_width = 2 * tan(cam->fov / 2);
+
+// 	//calculate canvas to viewport ratio
+// 	cam->cvr = cam->view_width / CANVAS_WIDTH;
+
+// 	ft_printf("cam->viewport_width = %lf\n", cam->view_width);
+// }
+
+
 void setup_camera(t_camera *cam)
 {
 	if (!cam)
-		return ;
-	// set up the rotation matrix
+		return;
+	
+	// Convert FOV from degrees to radians if needed
+	if (cam->fov > M_PI)  // If FOV is likely in degrees
+		cam->fov = cam->fov * M_PI / 180.0;
+	
+	// Set up the rotation matrix
 	cam->rot = get_rotmtrx(v3_get_norm(cam->orient));
-
+	
 	// Calculate view based on fov
 	cam->view_width = 2 * tan(cam->fov / 2);
-
-	//calculate canvas to viewport ratio
+	
+	// Calculate canvas to viewport ratio
 	cam->cvr = cam->view_width / CANVAS_WIDTH;
-
-	ft_printf("cam->viewport_width = %lf\n", cam->view_width);
+	
+	printf("Camera setup: pos=(%f,%f,%f), orient=(%f,%f,%f), fov=%f rad, width=%f\n",
+		   cam->pos.x, cam->pos.y, cam->pos.z,
+		   cam->orient.x, cam->orient.y, cam->orient.z,
+		   cam->fov, cam->view_width);
 }
+
+
+
 
 // void	init_objs(t_mrt mrt)
 // {
