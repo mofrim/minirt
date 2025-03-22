@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 11:24:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 21:24:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,15 @@ typedef struct s_mrt
 	t_xpm_canvas	*xc;
 }	t_mrt;
 
+/* Directions for moving the camera. */
+typedef enum e_dirs
+{
+	LEFT,
+	RIGHT,
+	FORTH,
+	BACK
+}	t_dirs;
+
 /********** General functions. **********/
 
 t_scene		*parse_scene(char *scene_file);
@@ -127,6 +136,9 @@ void		cleanup_mrt(t_mrt *mrt);
 
 int			rad2deg_int(double rad);
 t_mtrx		get_rotmtrx(t_v3 orient);
+t_mtrx		cam_get_new_rot(t_mtrx	oldrot, double x_ang, double y_ang);
+t_v3		cam_get_new_pos(t_camera *cam, t_dirs dir, double step);
+t_v3		cam_update_orient(t_camera cam);
 
 /********** UI. **********/
 

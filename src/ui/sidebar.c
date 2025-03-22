@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:01:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 16:47:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 20:42:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	show_sidebar(t_mrt mrt)
 	 */
 
 	mlx_string_put(mrt.mlx, mrt.win, 15, 20, rgb_to_int("00ff00"),
-		"MiniRT");
+		"Jose's & Mofrim's miniRT");
 	i = 2;
 	show_keys(mrt, &i);
 	i += 2;
 	show_mapinfo(mrt, &i);
 	i += 2;
-	print_menu_text(mrt, 15, 20 + (++i) * 15, "-- Current Map Params --");
+	print_menu_text(mrt, 15, 20 + (++i) * 15, "-- current Map Params --");
 	i++;
 	print_mapinfo(mrt, "subsample: ", mrt.scene->subsample, &i);
 	print_mapinfo(mrt, "fov: ", rad2deg_int(mrt.scene->cam->fov), &i);
@@ -73,4 +73,13 @@ static void	show_mapinfo(t_mrt mrt, int *i)
 	(*i)++;
 	print_mapinfo(mrt, "canvas width: ", CANVAS_WIDTH, i);
 	print_mapinfo(mrt, "canvas height: ", WINY, i);
+	(*i)++;
+	print_menu_text(mrt, 15, 20 + (++(*i)) * 15, "-- cam params --");
+	(*i)++;
+	print_mapinfo_float(mrt, "cam_pos.x : ", mrt.scene->cam->pos.x, i);
+	print_mapinfo_float(mrt, "cam_pos.y : ", mrt.scene->cam->pos.y, i);
+	print_mapinfo_float(mrt, "cam_pos.z : ", mrt.scene->cam->pos.z, i);
+	print_mapinfo_float(mrt, "cam_orient.x : ", mrt.scene->cam->orient.x, i);
+	print_mapinfo_float(mrt, "cam_orient.y : ", mrt.scene->cam->orient.y, i);
+	print_mapinfo_float(mrt, "cam_orient.z : ", mrt.scene->cam->orient.z, i);
 }

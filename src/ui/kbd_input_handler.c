@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:49:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 17:53:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/22 21:04:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 void	handle_quit_destroy_keys(int key, t_mrt *mrt);
 void	handle_subsample(int key, t_mrt mrt);
 void	handle_fov(int key, t_mrt mrt);
+void	handle_cam_rot_keys(int key, t_mrt mrt);
+void	handle_cam_dir_keys(int key, t_mrt mrt);
 
 int	kbd_input_handler(int key, t_mrt *mrt)
 {
-	printf("User pressed key: %d\n", key);
+	printf("pressed key: %d\n", key);
 	handle_quit_destroy_keys(key, mrt);
 	handle_subsample(key, *mrt);
 	handle_fov(key, *mrt);
+	handle_cam_rot_keys(key, *mrt);
+	handle_cam_dir_keys(key, *mrt);
 	return (0);
 }
 
