@@ -2,23 +2,28 @@
 
 ## Most recent TODOs
 
+### features
+
 - [x] UI feat: move the camera using `wasd` and `+/-`. `wasd` should rotate the
   camera up/left/down/right and zoom in and out but the focus point remains
   fixed. Of course, even nicer would be some mouse control but, meh.
-
 - [ ] UI feat: show a list of available objects in the scene, select one and make
   the objects parameters modifiable.
+- [ ] UI: implement key repetition / OnPress whatever events... maybe also
+  mouse.
+- [ ] maybe implement a small cli for controlling the raytracer?!?!
 
-- [x] rewrite idea: how about a completely different approach? using the xpm
-  functions from mlx and then generating images and putting them to screen?!?!
-
-- [x] **super good idea:** rewrite xpm-raytrace in a way that the xpm_canvas
-  variable is reused all the time... and a small idea for optimization: maybe it
-  is just possible to compute the new image then compare to the old one and put
-  only pixels to screen that differ.
+### todos / fixmes
 
 - [ ] **handle insides objects correctly !!!** (also placing lights inside objects and
   so on...)
+- [ ] In general: **i think we have to be very strict and robust in our parsing !!!**
+  - [ ] empty file `should_fail1.txt` segfaults!
+  - [ ] correct file with wrong file ext `should_fail.xyz` should error, but
+    doesn't atm. check if scene-files end in `.rt`! 
+  - [ ] `should_fail3.rt`  with only "gotcha!" as content segfaults
+- [ ] make sure that the requirements regarding window management are met!
+- [ ] fix: put light into a big sphere, light should not shine on outside objs
 
 
 ## Ressources
