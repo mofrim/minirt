@@ -13,19 +13,6 @@
   mouse.
 - [ ] maybe implement a small cli for controlling the raytracer?!?!
 
-### todos / fixmes
-
-- [ ] **handle insides objects correctly !!!** (also placing lights inside objects and
-  so on...)
-- [ ] In general: **i think we have to be very strict and robust in our parsing !!!**
-  - [ ] empty file `should_fail1.txt` segfaults!
-  - [ ] correct file with wrong file ext `should_fail.xyz` should error, but
-    doesn't atm. check if scene-files end in `.rt`! 
-  - [ ] `should_fail3.rt`  with only "gotcha!" as content segfaults
-- [ ] make sure that the requirements regarding window management are met!
-- [ ] fix: put light into a big sphere, light should not shine on outside objs
-
-
 ## Ressources
 
 - [Computerphile video about](https://www.youtube.com/watch?v=ezXGTRSx1g8)
