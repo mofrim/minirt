@@ -29,25 +29,26 @@
         ft_strchr(&tokenizer->input[tokenizer->position], ','));
   }
   ```
-  is a bit to simple.. this works for the spheres for example
+  is a bit to simple.. this works for the spheres for example. i started fixing
+  this but it definitely needs another look at it.
 
-  - [ ] color values should be checked for correctness. meaning if they are really
+- [ ] color values should be checked for correctness. meaning if they are really
     3 numbers seperated by commas between 0 and 255. Meaning a value like 256
     should lead to a parsing error and exit.
 
-  - [ ] i enter a line like this into one scene file:
+- [ ] i enter a line like this into one scene file:
 
-    ```
-    C	-5,0,affe	1,0,-0.1	99
-    ```
-    this should also be a parsing error. it is not so far.
+  ```
+  C	-5,0,affe	1,0,-0.1	99
+  ```
+  this should also be a parsing error. it is not so far.
 
-  - [ ] empty files lead to segfault.
+- [ ] empty files lead to segfault.
 
-  - [ ] `should_fail3.rt`  with only "gotcha!" as content -> segfaults
+- [ ] `should_fail3.rt`  with only "gotcha!" as content -> segfaults
 
-  - [ ] correct file with wrong file ext f.ex. `should_fail.xyz` should error,
-    but doesn't atm. check if scene-files end in `.rt`! 
+- [ ] correct file with wrong file ext f.ex. `should_fail.xyz` should error,
+  but doesn't atm. check if scene-files end in `.rt`! 
 
 ## raytracing
 
