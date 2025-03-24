@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 23:11:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 10:50:28 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_v3	parse_v3(t_parser *parser)
 	v3 = parse_default_v3();
 	token = tokenizer_next(parser->tokenizer);
 	debug_token(token, "in parse_v3");
-	if (!token || token->type != TOKEN_TYPE_KEYWORD)
+	if (!token || token->type != TOKEN_TYPE_V3)
 	{
 		if (token)
 			token_free(token);

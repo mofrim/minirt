@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:57 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 16:24:20 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:34:26 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,60 +125,51 @@ void	print_scene(t_scene scene)
 
 void debug_parsed_scene(t_scene *scene)
 {
+    int	count = 0;
+    t_objlst	*current;
+
+	count = 0;
+	current = scene->objects;
     printf("\n=== Parsed Scene Debug ===\n");
     if (!scene)
     {
         printf("Scene is NULL!\n");
         return;
     }
-    
-    // Check if camera exists
     if (scene->cam)
-    {
         printf("Camera found\n");
-    }
     else
-    {
         printf("No camera found\n");
-    }
-    
-    // Check if ambient light exists
     if (scene->alight)
-    {
         printf("Ambient light found\n");
-    }
     else
-    {
         printf("No ambient light found\n");
-    }
-    
-    // Count objects
-    int count = 0;
-    t_objlst *current = scene->objects;
     while (current)
     {
         count++;
         current = current->next;
     }
-    printf("Number of objects: %d\n", count);
-    printf("=== End Parsed Scene Debug ===\n\n");
+    printf("Number of objects: %d\n=== End Parsed Scene Debug ===\n\n", count);
 }
 
 void debug_token(t_token *token, const char *message)
 {
-    if (!token) {
+    if (!token)
+	{
         printf("DEBUG TOKEN %s: NULL token\n", message);
-        return;
+        return ;
     }
-
     if (token->type == TOKEN_TYPE_KEYWORD)
         printf("DEBUG TOKEN %s: KEYWORD: '%s'\n", message, token->u_value.str);
     else if (token->type == TOKEN_TYPE_NUMBER)
         printf("DEBUG TOKEN %s: NUMBER: %f\n", message, token->u_value.num);
     else if (token->type == TOKEN_TYPE_IDENTIFIER)
-        printf("DEBUG TOKEN %s: IDENTIFIER: '%s'\n", message, token->u_value.str);
+        printf("DEBUG TOKEN %s: IDENTIFIER: '%s'\n", message,
+				token->u_value.str);
     else if (token->type == TOKEN_TYPE_SYMBOL)
         printf("DEBUG TOKEN %s: SYMBOL: '%s'\n", message, token->u_value.str);
+    else if (token->type == TOKEN_TYPE_V3)
+        printf("DEBUG TOKEN %s: V3: '%s'\n", message, token->u_value.str);
     else
         printf("DEBUG TOKEN %s: UNKNOWN TYPE\n", message);
 }

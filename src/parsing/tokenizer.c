@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 23:14:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 11:09:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_tokenizer	*tokenizer_new(char *input)
 		return (NULL);
 	tokenizer->input = input;
 	tokenizer->position = 0;
+	tokenizer->len = ft_strlen(input);
 	return (tokenizer);
 }
 
@@ -52,9 +53,10 @@ t_token	*parse_coordinate(t_tokenizer *tokenizer)
 			tokenizer->input[tokenizer->position] != '\t' && \
 			tokenizer->input[tokenizer->position] != '\n')
 		tokenizer->position++;
-	token->type = TOKEN_TYPE_KEYWORD;
+	token->type = TOKEN_TYPE_V3;
 	token->u_value.str = ft_strndup(&tokenizer->input[start], \
 								tokenizer->position - start);
+	debug_token(token, "in parse_coordinate");
 	return (token);
 }
 

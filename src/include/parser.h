@@ -6,7 +6,7 @@
 /*   By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:22:49 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 18:42:09 by zrz              ###   ########.fr       */
+/*   Updated: 2025/03/24 11:09:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_node {
 typedef enum e_tokentype
 {
 	TOKEN_TYPE_KEYWORD,
+	TOKEN_TYPE_V3,
 	TOKEN_TYPE_IDENTIFIER,
 	TOKEN_TYPE_NUMBER,
 	TOKEN_TYPE_SYMBOL,
@@ -71,6 +72,7 @@ typedef struct s_tokenizer
 {
 	char	*input;
 	int		position;
+	size_t	len;
 }	t_tokenizer;
 
 // Define the parser

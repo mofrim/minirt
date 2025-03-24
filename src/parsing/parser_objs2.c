@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 23:08:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 11:36:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_cylinder	*parse_cylinder(t_parser *parser)
 	return (cylinder);
 }
 
+// FIXME: introduce TOKEN_TYPE_COLR in order to handle color parsing (i.e. with
+// checking for correct value ranges and so on)
 t_colr	parse_color(t_parser *parser)
 {
 	t_colr	color;
@@ -53,7 +55,7 @@ t_colr	parse_color(t_parser *parser)
 	debug_token(token, "in parse_color");
 	if (!token)
 		return (color);
-	if (token->type == TOKEN_TYPE_KEYWORD)
+	if (token->type == TOKEN_TYPE_V3)
 	{
 		parts = ft_split(token->u_value.str, ',');
 		if (parts && parts[0] && parts[1] && parts[2])

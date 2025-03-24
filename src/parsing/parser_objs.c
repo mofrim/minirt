@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:06:13 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 23:06:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 11:04:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_light	*parse_light(t_parser *parser)
 	return (light);
 }
 
-// TODO: too many lines
+// FIXME: too many lines.
 t_sphere	*parse_sphere(t_parser *parser)
 {
 	t_sphere	*sphere;

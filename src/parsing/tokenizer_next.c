@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:36 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/22 23:15:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 11:15:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 int	is_coordinate(t_tokenizer *tokenizer)
 {
-	return ((ft_isdigit(tokenizer->input[tokenizer->position]) || \
+	bool	is_really_v3;
+	size_t		i;
+
+	i = 0;
+	while (tokenizer->position + i < tokenizer->len && \
+				!ft_isspace(tokenizer->input[tokenizer->position + i]))
+		i++;
+	is_really_v3 = (ft_strchr(&tokenizer->input[tokenizer->position], ',') - &tokenizer->input[tokenizer->position]) < (int)i;
+	return (is_really_v3 && (ft_isdigit(tokenizer->input[tokenizer->position]) || \
 			tokenizer->input[tokenizer->position] == '-' || \
-			tokenizer->input[tokenizer->position] == '+') && \
-		ft_strchr(&tokenizer->input[tokenizer->position], ','));
+			tokenizer->input[tokenizer->position] == '+'));
 }
 
 int	is_identifier(t_tokenizer *tokenizer)
