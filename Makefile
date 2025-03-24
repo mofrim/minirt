@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/27 13:01:07 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/27 13:08:02 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,21 +95,20 @@ MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/constants.h \
 							$(INC_DIR)/objects.h \
 							$(INC_DIR)/mtrx.h \
-							$(INC_DIR)/parser.h
+							$(INC_DIR)/parser.h \
+							$(INC_DIR)/keycodes.h
 
-# change this back to 'cc' @school for eval
+# FIXME: change this back to 'cc' @school for eval
 CC			=	clang
 CFLAGS	=	-g -Werror -Wall -Wextra
 
 # special nix compilation support for mlx. see LIBMLX rule.
 NIX11 = $(shell echo $$NIX11)
 
-# GRN = \033[0;32m
 GRN = \033[38;5;40m
 RED = \033[1;31m
 WHT = \033[1;37m
 EOC = \033[1;0m
-# YLW = \033[1;33m
 YLW = \033[38;5;3m
 MSGOPN = $(YLW)[[$(GRN)
 MSGEND = $(YLW)]]$(EOC)

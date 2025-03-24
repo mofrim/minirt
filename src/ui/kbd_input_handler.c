@@ -6,11 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 08:49:56 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 21:04:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:19:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "keycodes.h"
 
 void	handle_quit_destroy_keys(int key, t_mrt *mrt);
 void	handle_subsample(int key, t_mrt mrt);
@@ -40,7 +41,7 @@ void	redraw_win(t_mrt mrt)
 
 void	handle_quit_destroy_keys(int key, t_mrt *mrt)
 {
-	if (key == 65307)
+	if (key == KEY_ESC)
 	{
 		cleanup_mrt(mrt);
 		exit(0);

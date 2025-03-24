@@ -6,11 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 18:05:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 21:20:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:18:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "keycodes.h"
 
 /* Handle the camera rotations via `wasd` keys. First the new roation matrix is
  * calculated and then the orient vector is updated correspopndingly. For
@@ -52,25 +53,25 @@ void	handle_cam_rot_keys(int key, t_mrt mrt)
  */
 void	handle_cam_dir_keys(int key, t_mrt mrt)
 {
-	if (key == 65362)
+	if (key == KEY_UP)
 	{
 		printf("move pos forth\n");
 		mrt.scene->cam->pos = cam_get_new_pos(mrt.scene->cam, FORTH, 0.4);
 		redraw_win(mrt);
 	}
-	else if (key == 65364)
+	else if (key == KEY_DOWN)
 	{
 		printf("move pos back\n");
 		mrt.scene->cam->pos = cam_get_new_pos(mrt.scene->cam, BACK, 0.4);
 		redraw_win(mrt);
 	}
-	else if (key == 65361)
+	else if (key == KEY_LEFT)
 	{
 		printf("move pos left\n");
 		mrt.scene->cam->pos = cam_get_new_pos(mrt.scene->cam, LEFT, 0.4);
 		redraw_win(mrt);
 	}
-	else if (key == 65363)
+	else if (key == KEY_RIGHT)
 	{
 		printf("move pos right\n");
 		mrt.scene->cam->pos = cam_get_new_pos(mrt.scene->cam, RIGHT, 0.4);
