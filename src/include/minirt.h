@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 22:13:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/25 15:17:50 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void		error_exit(char *msg);
 void		nullcheck(void *p, char *msg);
 void		cleanup_mrt(t_mrt *mrt);
 char		*read_file(char *filename);
-int         ft_atof(const char *str); // Still need to implement this
+double         ft_atof(const char *str); // Still need to implement this
 
 /********** Math utils. **********/
 

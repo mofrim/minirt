@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/24 09:43:23 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/25 14:09:19 by jroseiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRCS		=	main.c \
 					parser_parse.c \
 					parser_utils.c \
 					parser_utils2.c \
+					ft_atof.c \
 					tokenizer.c \
 					tokenizer_next.c \
 					tokenizer_nums.c \

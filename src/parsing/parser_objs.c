@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:06:13 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/24 11:04:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/25 15:29:37 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_light	*parse_light(t_parser *parser)
 	light->pos = parse_v3(parser);
 	token = tokenizer_next(parser->tokenizer);
 	if (token && token->type == TOKEN_TYPE_KEYWORD)
-		light->bright = atof(token->u_value.str);
+		light->bright = ft_atof(token->u_value.str);
 	else if (token && token->type == TOKEN_TYPE_NUMBER)
 		light->bright = token->u_value.num;
 	else
@@ -48,7 +48,7 @@ t_sphere	*parse_sphere(t_parser *parser)
 	token = tokenizer_next(parser->tokenizer);
 	if (token && token->type == TOKEN_TYPE_KEYWORD)
 	{
-		diameter = atof(token->u_value.str);
+		diameter = ft_atof(token->u_value.str);
 		sphere->r = diameter / 2.0;
 	}
 	else if (token && token->type == TOKEN_TYPE_NUMBER)
