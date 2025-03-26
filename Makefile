@@ -3,16 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
+#    By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/25 14:09:19 by jroseiro         ###   ########.fr        #
+#    Updated: 2025/03/26 17:40:23 by zrz              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minirt
 
-SRC_DIR		=	./src
+SRC_DIR     =   ./src
+
+# --- Platform Detection ---
+ARCH := $(shell uname -m)
+IS_FEDORA := $(shell test -f /etc/fedora-release && echo 1)
+# Check for common ARM identifiers
+IS_ARM := $(findstring arm,$(ARCH))$(findstring aarch64,$(ARCH))
+
+# --- Conditional MLX Setup ---
+# Default to minilibx-linux
+MLX_TARGET_DIR := ./minilibx-linux
+MLX_LIBS := -lmlx -lXext -lX11
+
+# Use OpenGL version for ARM or Fedora
+USE_OPENGL := 0
+ifneq ($(IS_ARM),)
+	USE_OPENGL := 1
+endif
+ifeq ($(IS_FEDORA),1)
+	USE_OPENGL := 1
+endif
+
+ifeq ($(USE_OPENGL),1)
+	MLX_TARGET_DIR := ./minilibx_opengl # Ensure this matches the unpacked directory name
+	# Common libs for mlx_opengl. Adjust if needed. Requires OpenGL development libraries installed.
+	MLX_LIBS := -lmlx -lGL -lGLU -lXext -lX11
+   # @echo "Using MiniLibX OpenGL for $(ARCH) / Fedora=$(IS_FEDORA)"
+else
+   # @echo "Using MiniLibX Linux (X11) for $(ARCH) / Fedora=$(IS_FEDORA)"
+endif
+# --- End Conditional MLX Setup ---
 
 # using the *magic* VPATH variable for finding my sources 🤯. also possible to
 # use it like: `vpath %.c dir1/ dir2/ ...`. more on this ->
@@ -75,20 +105,24 @@ SRCS		=	main.c \
 					kbd_cam.c \
 					cam_get_new_pos_rot.c
 
-OBJDIR	=	obj
-OBJS		=	$(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
-LIBFT_PATH	= ./libft
-LIBFT				= $(LIBFT_PATH)/libft.a
+OBJDIR  =   obj
+OBJS        =   $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
-LIBMLX_PATH = ./minilibx-linux
-LIBMLX 			= ./minilibx-linux/libmlx.a
+LIBFT_PATH  = ./libft
+LIBFT               = $(LIBFT_PATH)/libft.a
 
-LIB_PATHS = -L$(LIBMLX_PATH) -L$(LIBFT_PATH)
-LIBS 			= -lmlx -lXext -lX11 -lm -lft
+# Use the conditionally set MLX directory
+LIBMLX_PATH = $(MLX_TARGET_DIR)
+LIBMLX          = $(MLX_TARGET_DIR)/libmlx.a # Assuming library name is still libmlx.a inside
 
-INC_DIR			= $(SRC_DIR)/include
-INC					= -I$(INC_DIR) -I$(LIBMLX_PATH) -I$(LIBFT_PATH)
+# Use the conditionally set MLX directory and libs
+LIB_PATHS = -L$(MLX_TARGET_DIR) -L$(LIBFT_PATH)
+LIBS            = $(MLX_LIBS) -lm -lft # Use MLX_LIBS determined above
+
+INC_DIR         = $(SRC_DIR)/include
+# Use the conditionally set MLX directory for includes
+INC                 = -I$(INC_DIR) -I$(MLX_TARGET_DIR) -I$(LIBFT_PATH)
 
 MINRT_HDRS	= $(INC_DIR)/minirt.h \
 							$(INC_DIR)/vec3.h \
@@ -141,15 +175,25 @@ $(LIBFT):
 	make -C $(LIBFT_PATH) all
 
 $(LIBMLX):
-ifdef NIX11
-	@echo -e "$(call log_msg,feels nixy around here.. Compiling MLX the nix way!)"
-	sed -i 's/local xlib_inc="$$(get_xlib_include_path)"/local xlib_inc="$$NIX11"/g' ./minilibx-linux/configure 
-	sed -i 's/mlx_int_anti_resize_win/\/\/mlx_int_anti_resize_win/g' ./minilibx-linux/mlx_new_window.c
-	NIX11=$NIX11 make -C ./minilibx-linux/
+	@echo -e "$(call log_msg,Compiling MLX in $(MLX_TARGET_DIR)...)"
+ifeq ($(USE_OPENGL),1)
+	# Compile OpenGL version - Assuming 'make' in its directory works
+	# You might need specific flags or steps depending on the OpenGL version's requirements
+	@echo -e "$(call log_msg,Compiling MLX OpenGL version...)"
+	@make -C $(MLX_TARGET_DIR)/
 else
-	@echo -e "$(call log_msg,feels clustery around here.. compiling MLX the normal way!)"
-	@echo
-	make -C ./minilibx-linux/
+	# Compile Linux X11 version (original logic)
+	@echo -e "$(call log_msg,Compiling MLX Linux X11 version...)"
+	ifdef NIX11
+		@echo -e "$(call log_msg,feels nixy around here.. Compiling MLX the nix way!)"
+		# Apply Nix-specific patches only for the linux version
+		sed -i 's/local xlib_inc="$$(get_xlib_include_path)"/local xlib_inc="$$NIX11"/g' $(MLX_TARGET_DIR)/configure || true
+		sed -i 's/mlx_int_anti_resize_win/\/\/mlx_int_anti_resize_win/g' $(MLX_TARGET_DIR)/mlx_new_window.c || true
+		NIX11=$(NIX11) make -C $(MLX_TARGET_DIR)/
+	else
+		@echo -e "$(call log_msg,feels clustery around here.. compiling MLX the normal way!)"
+		@make -C $(MLX_TARGET_DIR)/
+	endif
 endif
 
 bonus: $(NAME)
@@ -176,8 +220,8 @@ setup:
 fullclean:
 	@echo -e "$(call log_msg,Removing libft objs.)"
 	@make -s -C $(LIBFT_PATH) clean
-	@echo -e "$(call log_msg,Removing libmlx objs.)"
-	@make -s -C $(LIBMLX_PATH) clean
+	@echo -e "$(call log_msg,Removing libmlx objs from $(MLX_TARGET_DIR).)" # Updated path
+	@make -s -C $(MLX_TARGET_DIR) clean # Use variable
 	@echo -e "$(call log_msg,Removing minirt objs.)"
 	@rm -rf $(OBJDIR)
 
@@ -188,8 +232,8 @@ clean:
 fullfclean:
 	@echo -e "$(call log_msg,fcleaning libft.)"
 	@make -s -C $(LIBFT_PATH) fclean
-	@echo -e "$(call log_msg,fcleaning libmlx.)"
-	@make -s -C $(LIBMLX_PATH) clean
+	@echo -e "$(call log_msg,fcleaning libmlx from $(MLX_TARGET_DIR).)" # Updated path
+	@make -s -C $(MLX_TARGET_DIR) clean # Use variable (mlx usually only has 'clean')
 	@echo -e "$(call log_msg,Removing minirt objs.)"
 	@rm -rf $(OBJDIR)
 	@echo -e "$(call log_msg,Removing $(NAME) binary.)"
