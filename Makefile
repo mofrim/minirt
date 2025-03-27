@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/24 09:43:23 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/27 13:01:07 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,8 @@ log_msg = $(MSGOPN) $(1) $(MSGEND)
 # Control preproc consts in constants.h based on build host:
 ifeq ($(HOST), rubi)
 	BHOST = RUBI
+else ifeq ($(HOST), school)
+	BHOST = SCHOOL
 else
 	BHOST = DEFAULT
 endif
