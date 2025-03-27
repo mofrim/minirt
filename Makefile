@@ -6,7 +6,7 @@
 #    By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/26 17:40:23 by zrz              ###   ########.fr        #
+#    Updated: 2025/03/27 14:47:57 by jroseiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MLX_LIBS := -lmlx -lXext -lX11
 
 # Use OpenGL version for ARM or Fedora
 USE_OPENGL := 0
-ifneq ($(IS_ARM),)
+ifeq ($(IS_ARM), arm)
 	USE_OPENGL := 1
 endif
 ifeq ($(IS_FEDORA),1)
@@ -37,7 +37,7 @@ endif
 ifeq ($(USE_OPENGL),1)
 	MLX_TARGET_DIR := ./minilibx_opengl # Ensure this matches the unpacked directory name
 	# Common libs for mlx_opengl. Adjust if needed. Requires OpenGL development libraries installed.
-	MLX_LIBS := -lmlx -lGL -lGLU -lXext -lX11
+	MLX_LIBS := -lmlx -framework OpenGL -framework AppKit -lz
    # @echo "Using MiniLibX OpenGL for $(ARCH) / Fedora=$(IS_FEDORA)"
 else
    # @echo "Using MiniLibX Linux (X11) for $(ARCH) / Fedora=$(IS_FEDORA)"
@@ -160,15 +160,29 @@ endif
 
 all: $(NAME)
 
+check:
+	echo $(IS_ARM)
+	echo $(MLX_TARGET_DIR)
+
 $(OBJDIR)/%.o : %.c $(MINRT_HDRS)
 	@mkdir -p $(OBJDIR)
+	echo "libs: $(LIBS)"
 	@echo -e "$(call log_msg,Compiling: $<)"
-	@$(CC) -D$(BHOST) $(CFLAGS) $(INC) -c $< -o $@
+ifeq ($(USE_OPENGL), 1)
+	@$(CC) -DOPENGL -D$(BHOST) $(CFLAGS) $(INC) -c $< -o $@
+else
+	@$(CC) -DX11 -D$(BHOST) $(CFLAGS) $(INC) -c $< -o $@
+endif
 
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBMLX) $(MINRT_HDRS)
 	@echo -e "$(call log_msg,Compiling minirt...)"
-	$(CC) -D$(BHOST) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
+	echo "libs: $(LIBS)"
+ifeq ($(USE_OPENGL), 1)
+	$(CC) -DOPENGL -D$(BHOST) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
+else
+	$(CC) -DX11 -D$(BHOST) $(CFLAGS) $(INC) $(LIB_PATHS) -o $(NAME) $(OBJS) $(LIBS)
+endif
 
 $(LIBFT):
 	@echo -e "$(call log_msg,Compiling libft...)"

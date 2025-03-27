@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 11:11:23 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 16:45:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:06:04 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cleanup_mrt(t_mrt *mrt)
 {
 	mlx_destroy_image(mrt->mlx, mrt->xc->img);
 	mlx_destroy_window(mrt->mlx, mrt->win);
-	mlx_destroy_display(mrt->mlx);
+	// mlx_destroy_display(mrt->mlx);
 	free(mrt->xc);
 	free(mrt->mlx);
 	objlst_clear(mrt->scene->objects);

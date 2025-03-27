@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 07:46:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/25 15:17:50 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:00:56 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,17 @@
 /* for uint8_t, ... */
 # include <stdint.h>
 
+#ifdef OPENGL
+# include "../minilibx_opengl/mlx.h"
+# include "../minilibx_opengl/mlx_int.h"
+# include "../libft/libft.h"
+#endif
+
+#ifdef X11
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
+#endif
 
 /********** LinalAlg headers. **********/
 
@@ -62,6 +70,9 @@
 /********** Colors. **********/
 
 # include "colors.h"
+
+typedef mlx_ptr_t t_xvar;
+typedef mlx_win_list_t t_win_list;
 
 /********** XPM. **********/
 

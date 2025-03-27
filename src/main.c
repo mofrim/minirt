@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 23:21:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:02:57 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 	setup_scene(scene);
 	mrt = init_mrt(scene);
 	mlx_key_hook(mrt->win, kbd_input_handler, mrt);
-	mlx_hook(mrt->win, DestroyNotify, 0, close_btn_handler, mrt);
+	mlx_hook(mrt->win, 0, 0, close_btn_handler, mrt);
 	do_stuff(*mrt);
 	mlx_loop(mrt->mlx);
 	cleanup_mrt(mrt);

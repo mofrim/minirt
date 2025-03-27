@@ -6,14 +6,21 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 21:45:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 11:38:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:52:58 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef XPM_H
 # define XPM_H
 
-# include "../minilibx-linux/mlx_int.h"
+
+
+#ifdef OPENGL
+// # include "../minilibx_opengl/mlx_int.h"
+#endif
+#ifdef X11
+// # include "../minilibx-linux/mlx_int.h"
+#endif
 
 /* Forward declarations. */
 typedef struct s_mrt	t_mrt;
