@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:38:39 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/08 14:29:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:14:01 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 /**
  * The heavy 3D vector class.
  *
- * For a changing the value of the vector itself use memeber functions in
+ * For changing the value of the vector itself use member functions in
  * combination with assignment:
- * 	
+ *
  * 		t_vec3	v;
  * 		v = ...;
- * 		v = v.add_scalar(5);
+ * 		v = v.add_scalar(&v, 5);
  */
+
 typedef struct s_vec3 {
 	double			x;
 	double			y;

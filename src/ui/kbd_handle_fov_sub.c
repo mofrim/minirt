@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 13:20:22 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/24 15:16:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 16:23:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	handle_subsample(int key, t_mrt mrt)
 	else if (key == KEY_RCBRACE && mrt.scene->subsample < 100)
 	{
 		mrt.scene->subsample++;
+		redraw_win(mrt);
+	}
+	else if (key == KEY_1)
+	{
+		mrt.scene->subsample = 1;
 		redraw_win(mrt);
 	}
 }
