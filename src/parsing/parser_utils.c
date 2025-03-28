@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/24 10:50:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/28 15:34:14 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_v3	parse_v3_from_parts(char **parts)
 {
 	t_v3	v3;
 
-	v3.x = atof(parts[0]);
-	v3.y = atof(parts[1]);
-	v3.z = atof(parts[2]);
+	v3.x = ft_atof(parts[0]);
+	v3.y = ft_atof(parts[1]);
+	v3.z = ft_atof(parts[2]);
 	return (v3);
 }
 

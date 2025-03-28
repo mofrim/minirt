@@ -6,11 +6,18 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 17:01:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/03/22 23:21:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/24 16:26:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int key_press_handler(int key, t_mrt *mrt)
+{
+	(void)mrt;
+	printf("key %d is pressed", key);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -57,6 +64,10 @@ int	main(int ac, char **av)
 	setup_scene(scene);
 	mrt = init_mrt(scene);
 	mlx_key_hook(mrt->win, kbd_input_handler, mrt);
+
+	// FIXME: Why is this working?
+	mlx_hook(mrt->win, KeyPress, KeyPressMask, key_press_handler, mrt);
+
 	mlx_hook(mrt->win, DestroyNotify, 0, close_btn_handler, mrt);
 	do_stuff(*mrt);
 	mlx_loop(mrt->mlx);
