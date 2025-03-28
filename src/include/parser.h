@@ -6,7 +6,7 @@
 /*   By: zrz <zrz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:22:49 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/24 11:09:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:12:49 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ t_scene	*parser_parse(t_parser *parser);
 // Free the parser
 void	parser_free(t_parser *parser);
 void	token_free(t_token *token);
-t_v3	parse_v3(t_parser *parser);
 
 
 // needs to be organized, just to test for now:
@@ -108,13 +107,13 @@ t_scene     *parser_parse(t_parser *parser);
 t_scene     *init_scene(void);
 void        handle_token_keyword(t_parser *parser, t_scene *scene, t_token *token);
 void        handle_more_keywords(t_parser *parser, t_scene *scene, t_token *token);
-void        parse_tokens_recursive(t_parser *parser, t_scene *scene);
+void        parse_tokens_recursive(t_parser *parser, t_scene *scene, bool *valid);
 
 /***** object parsers *****/
 t_amb_light *parse_ambient_light(t_parser *parser);
 t_camera    *parse_camera(t_parser *parser);
 t_light     *parse_light(t_parser *parser);
-t_colr      parse_color(t_parser *parser);
+t_colr      parse_color(t_parser *parser, bool *valid);
 t_sphere    *parse_sphere(t_parser *parser);
 t_plane     *parse_plane(t_parser *parser);
 t_cylinder  *parse_cylinder(t_parser *parser);
@@ -122,13 +121,15 @@ t_cylinder  *parse_cylinder(t_parser *parser);
 
 
 /***** parser utils *****/
-t_v3        parse_v3(t_parser *parser);
-t_v3        parse_default_v3(void);
-t_v3        parse_v3_from_parts(char **parts);
+t_v3		parse_v3(t_parser *parser, bool *valid);
+t_v3		parse_default_v3(void);
+t_v3		parse_v3_from_parts(char **parts);
 double		parse_number(t_tokenizer *tokenizer);
-void        free_parts(char **parts);
-void        free_parts_helper(char **parts);
-
+void		free_parts(char **parts);
+void		free_parts_helper(char **parts);
+t_colr		validate_color(t_colr color, bool *valid);
+char		*validate_file_content(char *filename);
+bool		is_rt(char *filename);
 
 /********** TOKENIZER **********/
 

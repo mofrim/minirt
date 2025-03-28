@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/24 11:36:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/28 18:52:32 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,44 @@
 t_plane	*parse_plane(t_parser *parser)
 {
 	t_plane	*plane;
-
+	bool valid;
+	
+	valid = true;
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (NULL);
-	plane->pop = parse_v3(parser);
-	plane->normal = parse_v3(parser);
-	plane->colr = parse_color(parser);
+	plane->pop = parse_v3(parser, &valid);
+	plane->normal = parse_v3(parser, &valid);
+	plane->colr = parse_color(parser, &valid);
 	return (plane);
 }
 
 t_cylinder	*parse_cylinder(t_parser *parser)
 {
 	t_cylinder	*cylinder;
+	bool valid;
 
+	valid = true;
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		return (NULL);
-	cylinder->center = parse_v3(parser);
-	cylinder->axis = parse_v3(parser);
+	cylinder->center = parse_v3(parser, &valid);
+	cylinder->axis = parse_v3(parser, &valid);
 	cylinder->radius = parse_number(parser->tokenizer);
 	cylinder->height = parse_number(parser->tokenizer);
-	cylinder->colr = parse_color(parser);
+	cylinder->colr = parse_color(parser, &valid);
 	return (cylinder);
 }
 
 // FIXME: introduce TOKEN_TYPE_COLR in order to handle color parsing (i.e. with
 // checking for correct value ranges and so on)
-t_colr	parse_color(t_parser *parser)
+t_colr	parse_color(t_parser *parser, bool *valid)
 {
 	t_colr	color;
 	t_token	*token;
 	char	**parts;
 
+	*valid = true;
 	color.r = 255;
 	color.g = 255;
 	color.b = 255;
@@ -67,5 +72,5 @@ t_colr	parse_color(t_parser *parser)
 		}
 	}
 	token_free(token);
-	return (color);
+	return (validate_color(color, valid));
 }

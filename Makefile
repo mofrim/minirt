@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
+#    By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 17:02:20 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/28 15:36:56 by jroseiro         ###   ########.fr        #
+#    Updated: 2025/03/28 18:44:43 by jroseiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ VPATH	=	./src ./src/linalg ./src/objects ./src/ui ./src/utils ./src/raytrace \
 
 # list all source files here
 SRCS		=	main.c \
-					parse_scene.c \
 					close_btn_handler.c \
 					init_mrt.c \
 					kbd_input_handler.c \
@@ -65,6 +64,8 @@ SRCS		=	main.c \
 					parser_parse.c \
 					parser_utils.c \
 					parser_utils2.c \
+					parser_validator.c \
+					parser_validator2.c \
 					tokenizer.c \
 					tokenizer_next.c \
 					tokenizer_nums.c \

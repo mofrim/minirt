@@ -6,7 +6,7 @@
 /*   By: jroseiro <jroseiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:35:22 by jroseiro          #+#    #+#             */
-/*   Updated: 2025/03/28 15:34:14 by jroseiro         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:09:34 by jroseiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_v3	parse_v3_from_parts(char **parts)
 	return (v3);
 }
 
-t_v3	parse_v3(t_parser *parser)
+t_v3	parse_v3(t_parser *parser, bool *valid)
 {
 	t_v3	v3;
 	t_token	*token;
@@ -60,6 +60,8 @@ t_v3	parse_v3(t_parser *parser)
 	{
 		if (token)
 			token_free(token);
+		ft_putendl_fd("Error: Expected vector format x,y,z", 2);
+		*valid = false;
 		return (v3);
 	}
 	parts = ft_split(token->u_value.str, ',');
@@ -68,6 +70,8 @@ t_v3	parse_v3(t_parser *parser)
 		if (parts)
 			free_parts_helper(parts);
 		token_free(token);
+		ft_putendl_fd("Error: Invalid vector format", 2);
+		*valid = false;
 		return (v3);
 	}
 	v3 = parse_v3_from_parts(parts);
